@@ -2,7 +2,7 @@
   <div class="sidebar">
     <logoText/>
     <router-link to="/">Home</router-link>
-    <router-link to="/profile">My Profile</router-link>
+    <router-link to="/spotify">Spotify Songs</router-link>
   </div>
 </template>
 

@@ -6,6 +6,11 @@ import router from './router'
 
 Vue.config.productionTip = false
 
+window.spotifySongs = {
+  lastTime: 0,
+  items: []
+}
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
