@@ -1,47 +1,51 @@
 <template>
   <div class="sidebar">
-    <logoText/>
     <router-link to="/">Home</router-link>
     <router-link to="/spotify">Spotify Songs</router-link>
+    <router-link to="/links">Links</router-link>
   </div>
 </template>
 
 <script>
-  import LogoText from './LogoText.vue'
   export default {
-    name: 'Sidebar',
-    components: {
-      LogoText
-    }
+    name: 'Sidebar'
   }
 </script>
 
 <style>
   .sidebar {
-    background-color: #e7afad;
+    top: 136px;
     width: 240px;
     height: 100%;
     position: fixed;
   }
   .sidebar a {
-    box-shadow: inset 0px 34px 0px -15px #b54b3a;
-    background-color: #a73f2d;
-    border: 1px solid #241d13;
+    box-shadow: inset 0px 34px 0px -15px #172d1c;
+    background-color: #19211f;
+    border: 1px solid #161f15;
     display: inline-block;
     cursor: pointer;
-    color: #ffffff;
+    color: #afafbf;
     font-family: Arial;
     font-size: 20px;
     padding: 9px 23px;
     text-decoration: none;
-    text-shadow: 0px -1px 0px #7a2a1d;
+    text-shadow: 0px -1px 0px #1a2a1d;
     display: block;
+    margin-right: 10px;
+    transition: all 0.15s;
   }
   .sidebar a:hover {
-    background-color: #b34332;
+    box-shadow: inset 0px 34px 0px -15px #223b2a;
+    background-color: #203828;
+    padding-left: 35px;
+    margin-right: 0px;
+    color: #ffffff;
+    transition: all 0.15s;
   }
   .sidebar a:active {
     position: relative;
-    top: 1px;
+    transform: skewY(-1deg);
+    transition: all 0.15s;
   }
 </style>

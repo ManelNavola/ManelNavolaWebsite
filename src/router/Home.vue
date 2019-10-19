@@ -1,43 +1,17 @@
 <template>
     <div class="home">
-        <p>Hello from Home</p>
-        <p>Hello from Home</p>
-        <p>Hello from Home</p>
-        <p>Hello from Home</p>
-        <p>Hello from Home</p>
-        <p>Hello from Home</p>
-        <p>Hello from Home</p>
-        <p>Hello from Home</p>
-        <p>Hello from Home</p>
-        <p>Hello from Home</p>
-        <p>Hello from Home</p>
-        <p>Hello from Home</p>
-        <p>Hello from Home</p>
-        <p>Hello from Home</p>
-        <p>Hello from Home</p>
-        <p>Hello from Home</p>
-        <p>Hello from Home</p>
-        <p>Hello from Home</p>
-        <p>Hello from Home</p>
-        <p>Hello from Home</p>
-        <p>Hello from Home</p>
-        <p>Hello from Home</p>
-        <p>Hello from Home</p>
-        <p>Hello from Home</p>
-        <p>Hello from Home</p>
-        <p>Hello from Home</p>
-        <p>Hello from Home</p>
-        <p>Hello from Home</p>
-        <p>Hello from Home</p>
-        <p>Hello from Home</p>
-        <p>Hello from Home</p>
-        <p>Hello from Home</p>
-        <p>Hello from Home</p>
+      <p>Hello!</p>
     </div>
 </template>
 
 <script>
-export default {
-  name: 'Home'
-}
+  export default {
+    name: 'Home'
+  }
 </script>
+
+<style>
+  .home p {
+    font-family: Arial;
+  }
+</style>
