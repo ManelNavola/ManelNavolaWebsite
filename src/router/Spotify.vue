@@ -22,10 +22,12 @@
     },
     methods: {
       getSpotifyData() {
+        var vm = this;
+        window.requesting.spotify = true;
         var timeNow = new Date().getTime();
         if (window.spotifySongs.lastTime < timeNow) {
           window.components.loading.show(500);
-          requestSpotifyData(timeNow, this);
+          requestSpotifyData(timeNow, vm);
         } else {
             this.songs = [];
             window.components.loading.hide();
@@ -34,11 +36,16 @@
                 this.songs.push(window.spotifySongs.items[i]);
               }, 50*i);
             }
+            window.requesting.spotify = false;
         }
       }
     },
     created () {
-      this.getSpotifyData();
+      if (window.requesting.spotify) {
+        window.components.loading.show();
+      } else {
+        this.getSpotifyData();
+      }
     }
   }
   
@@ -49,10 +56,15 @@
       json: true
     };
     request.get(options, function(error, response, body) {
+      window.requesting.spotify = false;
+      if (error || response.statusCode !== 200) {
+        window.components.loading.hide();
+        return;
+      }
       window.spotifySongs.lastTime = timeNow + 60000;
       window.spotifySongs.items = body.items;
       window.components.loading.hide();
-      for (let i = 0; i < body.items.length; i++) { 
+      for (let i = 0; i < body.items.length; i++) {
         setTimeout(() => {
           vm.songs.push(body.items[i]);
         }, 50*i);

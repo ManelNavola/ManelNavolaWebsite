@@ -20,16 +20,21 @@
     },
     methods: {
       show(v) {
-        if (this.lastId !== null) {
+        if (this.lastId != null) {
           clearTimeout(this.lastId);
+          this.lastId = null;
+        }
+        if (v == undefined) {
+          v = 5
         }
         this.lastId = setTimeout(() => {
           this.display = true;
         }, v);
       },
       hide() {
-        if (this.lastId !== null) {
+        if (this.lastId != null) {
           clearTimeout(this.lastId);
+          this.lastId = null;
         }
         this.display = false;
       }
@@ -39,8 +44,9 @@
     },
     watch: {
       $route() {
-        if (this.lastId !== null) {
+        if (this.display) {
           clearTimeout(this.lastId);
+          this.lastId = null;
         }
         this.display = false;
       }
@@ -50,7 +56,7 @@
 
 <style>
   .loadingtrans-enter-active {
-    animation: lt-out 2s ease-in;
+    animation: lt-out 0.5s ease-in;
   }
   .loadingtrans-leave-active {
     animation: lt-in 0.1s ease-in;

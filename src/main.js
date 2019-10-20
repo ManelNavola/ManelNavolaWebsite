@@ -15,6 +15,10 @@ window.components = {
   loading: null
 }
 
+window.requesting = {
+  spotify: false
+}
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
