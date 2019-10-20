@@ -1,9 +1,9 @@
 <template>
   <div id="app">
-    <sidebar/>
+    <sidebar ref="sidebarComponent"/>
     <div id="background">
     </div>
-    <img id="logo" src="./assets/logo_256.png" alt="Manel Navola Logo" width="96" height="96">
+    <img id="logo" src="./assets/logo_128.png" alt="Manel Navola Logo" width="96" height="96">
     <div class="main-page">
       <transition name="down">
         <router-view class="view"/>

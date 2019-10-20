@@ -1,23 +1,92 @@
 <template>
   <div class="sidebar">
-    <router-link to="/">Home</router-link>
+    <loading ref="loadingComponent"/>
+    <transition-group name="sidebarList">
+      <li v-for="rl in routerLinks" :key="rl.name">
+        <router-link :to="rl.link">{{ rl.name }}</router-link>
+      </li>
+    </transition-group>
+    <!-- <router-link to="/">Home</router-link>
     <router-link to="/spotify">Spotify Songs</router-link>
-    <router-link to="/links">Links</router-link>
+    <router-link to="/links">Links</router-link> -->
   </div>
 </template>
 
 <script>
+  import Loading from '../components/Loading.vue'
+  
   export default {
-    name: 'Sidebar'
+    name: 'Sidebar',
+    components: {
+      Loading
+    },
+    data () {
+      return {
+        routerLinks: [],
+        currentLink: '/',
+        addRouterLinks: [
+          { link: "/", name: "Home" },
+          { link: "/spotify", name: "Official Songs" },
+          { link: "/links", name: "Media Links" }
+        ]
+      }
+    },
+    created () {
+      var vm = this;
+      function checkLoaded() {
+        var hl = true;
+        for (var key in window.components) {
+          if (!window.components.hasOwnProperty(key) || window.components[key] == null) {           
+            hl = false;
+            break;
+          }
+        }
+        if (hl) {
+          for (let i=0; i < vm.addRouterLinks.length; i++) {
+            setTimeout(() => {
+              vm.routerLinks.push(vm.addRouterLinks[i])
+            }, i*150)
+          }
+        } else {
+          setTimeout(() => {
+            checkLoaded()
+          }, 10)
+        }
+      }
+      setTimeout(() => {
+        checkLoaded()
+      }, 10)
+    },
+    watch: {
+      $route(from, to) {
+        this.currentLink = to.path
+      }
+    }
   }
 </script>
 
 <style>
+  .sidebarList-enter-active {
+    animation: sidebarListEnter 0.2s ease-in;
+  }
+  @keyframes sidebarListEnter {
+    0% {
+      opacity: 0;
+      transform: translate(-120px, 0)
+    }
+    100% {
+      opacity: 1;
+      transform: translate(0px, 0)
+    }
+  }
   .sidebar {
     top: 136px;
     width: 240px;
     height: 100%;
     position: fixed;
+  }
+  .sidebar li {
+    list-style-type: none;
   }
   .sidebar a {
     box-shadow: inset 0px 34px 0px -15px #172d1c;
@@ -47,5 +116,14 @@
     position: relative;
     transform: skewY(-1deg);
     transition: all 0.15s;
+  }
+  
+  .sidebar a.router-link-exact-active {
+    box-shadow: inset 0px 34px 0px -15px #174d1c;
+    background-color: #19411f;
+    border: 1px solid #163f15;
+    color: #ffffff;
+    font-family: Arial;
+    font-weight: bold;
   }
 </style>

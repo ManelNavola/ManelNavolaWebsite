@@ -8,7 +8,11 @@ Vue.config.productionTip = false
 
 window.spotifySongs = {
   lastTime: 0,
-  items: []
+  items: [],
+}
+
+window.components = {
+  loading: null
 }
 
 /* eslint-disable no-new */
@@ -16,5 +20,5 @@ new Vue({
   el: '#app',
   router,
   components: { App },
-  template: '<App/>'
+  template: '<App/>',
 })
