@@ -49,7 +49,7 @@
       json: true
     };
     request.get(options, function(error, response, body) {
-      window.spotifySongs.lastTime = timeNow + 60000*5;
+      window.spotifySongs.lastTime = timeNow + 60000;
       window.spotifySongs.items = body.items;
       window.components.loading.hide();
       for (let i = 0; i < body.items.length; i++) { 

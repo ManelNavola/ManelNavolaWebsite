@@ -1,5 +1,12 @@
 <template>
   <div id="app">
+    <link rel="prefetch" href="./assets/apple_music_icon.png">
+    <link rel="prefetch" href="./assets/loading.png">
+    <link rel="prefetch" href="./assets/loading_shadow.png">
+    <link rel="prefetch" href="./assets/spotify_icon.png">
+    <link rel="prefetch" href="./assets/twitter_icon.png">
+    <link rel="prefetch" href="./assets/youtube_icon.png">
+    
     <sidebar ref="sidebarComponent"/>
     <div id="background">
     </div>

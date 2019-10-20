@@ -31,6 +31,7 @@
         if (this.lastId !== null) {
           clearTimeout(this.lastId);
         }
+        this.display = false;
       }
     },
     created () {
@@ -38,6 +39,9 @@
     },
     watch: {
       $route() {
+        if (this.lastId !== null) {
+          clearTimeout(this.lastId);
+        }
         this.display = false;
       }
     }
