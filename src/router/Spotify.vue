@@ -17,17 +17,18 @@
     name: 'Spotify',
     data () {
       return {
-        songs: []
+        songs: [],
+        pending: []
       };
     },
     methods: {
       getSpotifyData() {
-        var vm = this;
         window.requesting.spotify = true;
         var timeNow = new Date().getTime();
         if (window.spotifySongs.lastTime < timeNow) {
           window.components.loading.show(500);
-          requestSpotifyData(timeNow, vm);
+          window.spotifySongs.vm = this;
+          requestSpotifyData(timeNow);
         } else {
             this.songs = [];
             window.components.loading.hide();
@@ -42,20 +43,26 @@
     },
     created () {
       if (window.requesting.spotify) {
+        window.spotifySongs.vm = this;
         window.components.loading.show();
       } else {
         this.getSpotifyData();
       }
+    },
+    destroyed() {
+      for (let i = 0; i < this.pending.length; i++) {
+        clearTimeout(this.pending[i])
+      }
     }
   }
   
-  function requestSpotifyData(timeNow, vm) {
+  function requestSpotifyData(timeNow) {
     var request = require('request');
     var options = {
       url: 'https://manel-navola-website-server.herokuapp.com/spotifysongs',
       json: true
     };
-    request.get(options, function(error, response, body) {
+    request.get(options, (error, response, body) => {
       window.requesting.spotify = false;
       if (error || response.statusCode !== 200) {
         window.components.loading.hide();
@@ -65,9 +72,15 @@
       window.spotifySongs.items = body.items;
       window.components.loading.hide();
       for (let i = 0; i < body.items.length; i++) {
-        setTimeout(() => {
-          vm.songs.push(body.items[i]);
+        var to = setTimeout(() => {
+          if (window.spotifySongs.vm != null) {
+            window.spotifySongs.vm.songs.push(body.items[i]);
+            if (i == body.items.length) {
+              window.spotifySongs.vm.pending = []
+            }
+          }
         }, 50*i);
+        window.spotifySongs.vm.pending.push(to)
       }
     });
   }

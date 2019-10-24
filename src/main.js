@@ -9,6 +9,7 @@ Vue.config.productionTip = false
 window.spotifySongs = {
   lastTime: 0,
   items: [],
+  vm: null
 }
 
 window.components = {
