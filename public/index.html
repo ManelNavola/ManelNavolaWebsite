@@ -1,9 +1,19 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Manel Navola Official Website</title>
+      <title>Manel Navola Official Website</title>
+      <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-app.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-auth.js"></script>
+      <script>
+        firebase.initializeApp({
+          apiKey: "AIzaSyBO5aNRu27LcvPzdHeHc1F5D0ecP5vv0ng",
+          authDomain: "manelnavolacom.firebaseapp.com",
+          projectId: "manelnavolacom"
+        });
+        window.firebase = firebase;
+      </script>
     </head>
     <body>
-        <div id="app"></div>
+      <div id="app"></div>
     </body>
 </html>

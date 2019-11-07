@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Manel Navola Official Website</title>
+      <script src="https://www.gstatic.com/firebasejs/ui/4.2.0/firebase-ui-auth.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-app.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-auth.js"></script>
+      <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.2.0/firebase-ui-auth.css" />
+      <script type="text/javascript">
+        firebase.initializeApp({
+          apiKey: "AIzaSyBO5aNRu27LcvPzdHeHc1F5D0ecP5vv0ng",
+          authDomain: "manelnavolacom.firebaseapp.com",
+          projectId: "manelnavolacom"
+        });
+        // FirebaseUI config.
+        var uiConfig = {
+          signInSuccessUrl: '/#',
+          signInOptions: [
+            // Leave the lines as is for the providers you want to offer your users.
+            firebase.auth.EmailAuthProvider.PROVIDER_ID
+          ]
+        };
+        // Initialize the FirebaseUI Widget using Firebase.
+        var ui = new firebaseui.auth.AuthUI(firebase.auth());
+        // The start method will wait until the DOM is loaded.
+        ui.start('#firebaseui-auth-container', uiConfig);
+      </script>
+    </head>
+    <body>
+      <h1 style="font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+                font-size: 64px; text-align: center;">Admin Panel</h1>
+      <div id="firebaseui-auth-container"></div>
+    </body>
+</html>

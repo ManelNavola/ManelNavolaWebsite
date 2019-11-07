@@ -23,20 +23,8 @@
   import Sidebar from './components/Sidebar.vue'
   export default {
     name: 'App',
-    methods: {
-      ping() {
-        var request = require('request');
-        var options = {
-          url: 'https://manel-navola-website-server.herokuapp.com/ping'
-        };
-        request.post(options);
-      }
-    },
     components: {
       Sidebar
-    },
-    created () {
-      this.ping()
     }
   }
 </script>
@@ -83,7 +71,6 @@
   }
   html {
     background-color: #050505;
-    overflow-y: hidden;
     user-select: none;
   }
   #app {
@@ -102,7 +89,7 @@
   .view {
     position: absolute;
     margin-top: 128px;
-    width: calc(100% - 256px);
+    width: calc(100% - 264px);
   }
   #logo {
     position: absolute;

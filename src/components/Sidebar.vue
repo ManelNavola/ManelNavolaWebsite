@@ -6,9 +6,6 @@
         <router-link :to="rl.link">{{ rl.name }}</router-link>
       </li>
     </transition-group>
-    <!-- <router-link to="/">Home</router-link>
-    <router-link to="/spotify">Spotify Songs</router-link>
-    <router-link to="/links">Links</router-link> -->
   </div>
 </template>
 
@@ -26,9 +23,8 @@
         currentLink: '/',
         addRouterLinks: [
           { link: "/", name: "Home" },
-          { link: "/spotify", name: "Official Songs" },
-          { link: "/links", name: "Media Links" }
-        ]
+          { link: "/songs", name: "Official Songs" },
+          { link: "/links", name: "Media Links" }]
       }
     },
     created () {

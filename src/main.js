@@ -6,6 +6,10 @@ import router from './router'
 
 Vue.config.productionTip = false
 
+window.devMode = (window.webpackHotUpdate !== null)
+
+window.loggedIn = false;
+
 window.spotifySongs = {
   lastTime: 0,
   items: [],

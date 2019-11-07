@@ -21,20 +21,22 @@
     "babel-eslint": "^10.0.1",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
+    "expose-loader": "^0.7.5",
     "vue-template-compiler": "^2.6.10"
   },
   "eslintConfig": {
     "root": true,
     "env": {
       "node": true,
-	  "browser": true
+      "browser": true
     },
     "extends": [
       "plugin:vue/essential",
       "eslint:recommended"
     ],
     "rules": {
-      "no-console": "warn"
+      "no-console": "warn",
+      "no-unused-vars": "warn"
     },
     "parserOptions": {
       "parser": "babel-eslint"
