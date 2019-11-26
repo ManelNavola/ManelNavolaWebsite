@@ -4,7 +4,7 @@
                'background-color': background_color,
                'border': '5px solid ' + border_color
                }" :href="button_link" target="_blank">
-      <img :src="getImgUrl(button_image)">
+      <img :src="getImgUrl(button_image)" draggable="false">
       <p class="brandName">{{ button_name }}</p>
       <p class="handle">{{ button_handle }}</p>
     </a>

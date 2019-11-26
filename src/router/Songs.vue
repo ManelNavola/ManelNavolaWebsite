@@ -84,7 +84,7 @@
         window.components.loading.hide();
         return;
       }
-      window.spotifySongs.lastTime = timeNow + 60000;
+      window.spotifySongs.lastTime = timeNow + 60 * 1000;
       window.spotifySongs.items = bodyData;
       window.components.loading.hide();
       for (let i = 0; i < bodyData.length; i++) {

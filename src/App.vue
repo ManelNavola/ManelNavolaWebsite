@@ -10,7 +10,7 @@
     <sidebar ref="sidebarComponent"/>
     <div id="background">
     </div>
-    <img id="logo" src="./assets/logo_128.png" alt="Manel Navola Logo" width="96" height="96">
+    <img id="logo" draggable="false" src="./assets/logo_128.png" alt="Manel Navola Logo" width="96" height="96">
     <div class="main-page">
       <transition name="down">
         <router-view class="view"/>
@@ -70,7 +70,7 @@
     animation: animatedBackground 10s linear infinite;
   }
   html {
-    background-color: #050505;
+    background-color: #101010;
     user-select: none;
   }
   #app {
@@ -95,10 +95,14 @@
     position: absolute;
     top: 16px;
     left: calc(50% - 48px);
-    transition: transform 0.5s;
+    transition: all 0.5s;
   }
   #logo:hover {
     transform: scale(1.1,1.1) rotate(-5deg);
-    transition: transform 0.5s;
+    transition: all 0.5s;
+  }
+  #logo:active {
+    filter: invert(100%);
+    transition: all 0.2s;
   }
 </style>

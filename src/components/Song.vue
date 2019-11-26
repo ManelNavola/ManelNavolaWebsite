@@ -1,17 +1,18 @@
 <template>
   <div class="song">
-    <img ref="songImage" v-bind:src="songData.image" class="image" width="192px" height="192px">
+    <img ref="songImage" draggable="false" v-bind:src="songData.image" class="image" width="192px" height="192px">
+    <img draggable="false" v-bind:src="songData.image" class="image2" width="198px" height="198px">
     <p class="name">{{ songData.name }}</p>
     <a class="button spotifyButton" v-if="songData.spotify" v-bind:href="songData.spotify" target="_blank">
-      <img src="../assets/spotify_icon.png" width="32px" height="32px"/>
+      <img draggable="false" src="../assets/spotify_icon.png" width="32px" height="32px"/>
       <p>Listen on Spotify</p>
     </a>
     <a class="button appleButton" v-if="songData.apple" v-bind:href="songData.apple" target="_blank">
-      <img src="../assets/apple_music_icon.png" width="32px" height="32px"/>
+      <img draggable="false" src="../assets/apple_music_icon.png" width="32px" height="32px"/>
       <p>Listen on Apple Music</p>
     </a>
     <a class="button youtubeButton" v-if="songData.youtube" v-bind:href="songData.youtube" target="_blank">
-      <img src="../assets/youtube_icon.png" width="32px" height="32px"/>
+      <img draggable="false" src="../assets/youtube_icon.png" width="32px" height="32px"/>
       <p>Listen on Youtube</p>
     </a>
     <p class="release">{{ songData.release }}</p>
@@ -34,7 +35,15 @@
 
 <style>
   .image {
+    position: absolute;
+    margin-left: 2px;
+    margin-top: 2px;
+    z-index: 20;
+  }
+  .image2 {
     float: left;
+    filter: contrast(25%) blur(4px) opacity(90%);
+    z-index: 200;
   }
   .name {
     font-family: Arial;
