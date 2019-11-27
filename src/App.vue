@@ -1,16 +1,9 @@
 <template>
   <div id="app">
-    <link rel="prefetch" href="./assets/apple_music_icon.png">
-    <link rel="prefetch" href="./assets/loading.png">
-    <link rel="prefetch" href="./assets/loading_shadow.png">
-    <link rel="prefetch" href="./assets/spotify_icon.png">
-    <link rel="prefetch" href="./assets/twitter_icon.png">
-    <link rel="prefetch" href="./assets/youtube_icon.png">
-    
     <sidebar ref="sidebarComponent"/>
     <div id="background">
     </div>
-    <img id="logo" draggable="false" src="./assets/logo_128.png" alt="Manel Navola Logo" width="96" height="96">
+    <img id="logo" draggable="false" src="./assets/logo_128.png" alt="Manel Navola Logo" width="128px" height="128px">
     <div class="main-page">
       <transition name="down">
         <router-view class="view"/>
@@ -25,6 +18,14 @@
     name: 'App',
     components: {
       Sidebar
+    },
+    metaInfo: {
+      title: '???',
+      titleTemplate: '%s | Manel Navola',
+      meta: [
+        {name: 'description',
+         content: "Manel Navola's Official Website. Check out my Official songs!"}
+      ]
     }
   }
 </script>
@@ -96,6 +97,8 @@
     top: 16px;
     left: calc(50% - 48px);
     transition: all 0.5s;
+    width: 96px;
+    height: 96px;
   }
   #logo:hover {
     transform: scale(1.1,1.1) rotate(-5deg);
@@ -104,5 +107,13 @@
   #logo:active {
     filter: invert(100%);
     transition: all 0.2s;
+  }
+  .pageTitle {
+    text-align: left;
+    font-size: 48px;
+    font-family: "Montserrat", sans-serif;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    color: white;
   }
 </style>

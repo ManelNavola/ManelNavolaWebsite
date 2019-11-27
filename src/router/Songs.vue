@@ -1,5 +1,7 @@
 <template>
     <div class="songs">
+      <br><br><br>
+      <h1 class="pageTitle">Official Songs</h1>
       <transition-group name="bounce">
         <li v-for="song in songs" :key="song.name">
             <Song :songData="song"/>
@@ -54,6 +56,9 @@
       for (let i = 0; i < this.pending.length; i++) {
         clearTimeout(this.pending[i])
       }
+    },
+    metaInfo: {
+      title: 'Songs'
     }
   }
   

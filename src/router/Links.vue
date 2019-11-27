@@ -1,5 +1,7 @@
 <template>
     <div class="links">
+      <h1 class="pageTitle">Social Media Links</h1>
+      <br>
       <socialButton
                     background_color="#1DB954"
                     button_name="Spotify"
@@ -42,6 +44,9 @@
     name: 'Links',
     components: {
       SocialButton
+    },
+    metaInfo: {
+      title: 'Links'
     }
   }
 </script>

@@ -12,7 +12,14 @@
         "source": "**",
         "destination": "/index.html"
       }
-    ]
+    ],
+    "headers": [{
+      "source": "**/*.@(jpg|jpeg|gif|png)",
+      "headers": [{
+        "key": "Content-Type",
+        "value": "image/png"
+      }]
+    }]
   },
   "functions": {
     "predeploy": [
