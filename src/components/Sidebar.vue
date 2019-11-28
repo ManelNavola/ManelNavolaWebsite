@@ -80,6 +80,7 @@
     width: 240px;
     height: 100%;
     position: fixed;
+    z-index: 999999;
   }
   .sidebar li {
     list-style-type: none;
@@ -91,20 +92,20 @@
     display: inline-block;
     cursor: pointer;
     color: #afafbf;
-    font-family: Arial;
-    font-size: 20px;
-    padding: 9px 23px;
+    font-family: "Montserrat";
+    font-size: 18px;
+    padding: 9px 16px;
     text-decoration: none;
     text-shadow: 0px -1px 0px #1a2a1d;
     display: block;
-    margin-right: 10px;
+    margin-right: 44px;
     transition: all 0.15s;
   }
   .sidebar a:hover {
     box-shadow: inset 0px 34px 0px -15px #223b2a;
     background-color: #203828;
-    padding-left: 35px;
-    margin-right: 0px;
+    padding-left: 24px;
+    margin-right: 28px;
     color: #ffffff;
     transition: all 0.15s;
   }
@@ -119,7 +120,6 @@
     background-color: #19411f;
     border: 1px solid #163f15;
     color: #ffffff;
-    font-family: Arial;
     font-weight: bold;
   }
 </style>

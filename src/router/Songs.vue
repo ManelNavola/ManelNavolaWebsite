@@ -1,14 +1,14 @@
 <template>
-    <div class="songs">
-      <br><br><br>
-      <h1 class="pageTitle">Official Songs</h1>
-      <transition-group name="bounce">
-        <li v-for="song in songs" :key="song.name">
-            <Song :songData="song"/>
-        </li>
-      </transition-group>
-      <br>
-    </div>
+  <div class="songs">
+    <br><br><br>
+    <h1 class="pageTitle">Official Songs</h1>
+    <transition-group name="bounce">
+      <li v-for="song in songs" :key="song.name">
+        <Song :songData="song"/>
+      </li>
+    </transition-group>
+    <br>
+  </div>
 </template>
 
 <script>
@@ -110,6 +110,9 @@
 <style>
   .songs {
     margin-top: 72px;
+  }
+  .songs li {
+    list-style: none;
   }
   .bounce-enter-active {
     animation: bounce-in 0.2s;

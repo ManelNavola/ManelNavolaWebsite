@@ -57,6 +57,10 @@
     max-width: 1024px;
     grid-row-gap: 38px;
   }
+  .links a {
+    text-decoration: none;
+    color: inherit;
+  }
   .col2 {
     grid-column: 2 / 3;
   }

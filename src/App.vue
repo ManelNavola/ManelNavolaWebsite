@@ -4,11 +4,12 @@
     <div id="background">
     </div>
     <img id="logo" draggable="false" src="./assets/logo_128.png" alt="Manel Navola Logo" width="128px" height="128px">
-    <div class="main-page">
+    <h1>Manel Navola</h1>
+    <!--<div class="main-page">
       <transition name="down">
         <router-view class="view"/>
       </transition>
-    </div>
+    </div>-->
   </div>
 </template>
 
@@ -76,16 +77,24 @@
   }
   #app {
     position: absolute;
+    margin: 0;
+    padding: 0;
     top: 0px;
     left: 0px;
     right: 0px;
-  }
-  #app p {
     color: white;
   }
+  #app h1 {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    font-size: 3vw;
+    margin-left: calc(7.25vw + 8px);
+    margin-top: 2.25vw;
+  }
   .main-page {
-    margin-left: 256px;
+    margin-left: 220px;
     margin-top: 8px;
+    color: white;
   }
   .view {
     position: absolute;
@@ -94,11 +103,31 @@
   }
   #logo {
     position: absolute;
-    top: 16px;
-    left: calc(50% - 48px);
-    transition: all 0.5s;
-    width: 96px;
-    height: 96px;
+    top: 1.25vw;
+    left: 1.25vw;
+    transition: transform 0.5s, filter 0.5s;
+    width: 6vw;
+    height: 6vw;
+  }
+  @media (max-aspect-ratio: 1/1) {
+    #app h1 {
+      font-size: 3vh;
+      margin-left: calc(7.25vh + 8px);
+      margin-top: 2.25vh;
+    }
+    #logo {
+      top: 1.25vh;
+      left: 1.25vh;
+      width: 6vh;
+      height: 6vh;
+    }
+    
+    @media (max-width: 300px) {
+      #logo {
+        width: 20px;
+        height: 20px;
+      }
+    }
   }
   #logo:hover {
     transform: scale(1.1,1.1) rotate(-5deg);
@@ -109,11 +138,10 @@
     transition: all 0.2s;
   }
   .pageTitle {
-    text-align: left;
     font-size: 48px;
-    font-family: "Montserrat", sans-serif;
     margin-top: 0px;
     margin-bottom: 0px;
-    color: white;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 300;
   }
 </style>
