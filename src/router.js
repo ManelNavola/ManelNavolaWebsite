@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Home from '@/router/Home'
 import Songs from '@/router/Songs'
 import Links from '@/router/Links'
+import NotFound from '@/router/NotFound'
 
 Vue.use(Router)
 
@@ -23,6 +24,11 @@ export default new Router({
       path: '/links',
       name: 'Links',
       component: Links
+    },
+    {
+      path: '/*',
+      name: '404',
+      component: NotFound
     }
   ]
 })
