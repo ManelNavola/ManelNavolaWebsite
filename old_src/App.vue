@@ -5,11 +5,11 @@
     </div>
     <img id="logo" draggable="false" src="./assets/logo_128.png" alt="Manel Navola Logo" width="128px" height="128px">
     <h1>Manel Navola</h1>
-    <!--<div class="main-page">
+    <div class="main-page">
       <transition name="down">
         <router-view class="view"/>
       </transition>
-    </div>-->
+    </div>
   </div>
 </template>
 
