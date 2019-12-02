@@ -5,48 +5,20 @@
       <h2>Programmer & Music Producer</h2>
     </div>
     <div id="gridList">
-      <div class="item">
-        <div class="text">
-          <h3>Web Development</h3>
-          <h4>HTML, CSS, Javascript, Vue JS, Node JS</h4>
-          <p class="smallText">Responsive, simple and flexible web design using the lastest libraries and </p>
-        </div>
-        <img src="../assets/webDev.jpg"/>
-      </div>
       
-      <div class="item">
-        <div class="text">
-          <h3>Web Development</h3>
-          <h4>HTML, CSS, Javascript, Vue JS, Node JS</h4>
-          <p class="smallText">Responsive, simple and flexible web design using the lastest libraries and </p>
-        </div>
-        <img src="../assets/webDev.jpg"/>
-      </div>
+      <portfolioRow title="Web Development" subtitle="HTML, CSS, Javascript, Vue js, Node js" text="hola wapos" imgURL="webDev.jpg"/>
       
-      <div class="item">
-        <div class="text">
-          <h3>Web Development</h3>
-          <h4>HTML, CSS, Javascript, Vue JS, Node JS</h4>
-          <p class="smallText">Responsive, simple and flexible web design using the lastest libraries and </p>
-        </div>
-        <img src="../assets/webDev.jpg"/>
-      </div>
-      
-      <div class="item">
-        <div class="text">
-          <h3>Web Development</h3>
-          <h4>HTML, CSS, Javascript, Vue JS, Node JS</h4>
-          <p class="smallText">Responsive, simple and flexible web design using the lastest libraries and </p>
-        </div>
-        <img src="../assets/webDev.jpg"/>
-      </div>
     </div>
   </div>
 </template>
 
 <script>
+  import PortfolioRow from '@/components/PortfolioRow'
   export default {
     name: 'Home',
+    components: {
+      PortfolioRow
+    },
     metaInfo: {
       title: 'Home'
     }
@@ -60,29 +32,9 @@
     font-size: 2vh
   
   #gridList
-    margin-top: 15vh
-  .item
-    height: 50vh
-    .text
-      width: 55%
-      display: inline-block
-      h3
-        font-weight: 400
-        font-size: 3.5vh
-        line-height: 0
-      h4
-        font-weight: 300
-        font-size: 3vh
-      p
-        font-weight: 200
-        font-size: 2.5vh
-    img
-      display: inline-block
-      width: 40%
-      margin-top: 1vh
-      float: right
-      vertical-align: middle
-      border: 0.15vh solid
+    margin: 15vh 8vw 0 8vw
+    @media #{base.$smallscreen}
+      margin-top: 2vh
   
   #header
     display: inline-block
@@ -93,22 +45,22 @@
     border-radius: 0.15vh
     transition: font-size base.$screenFitTime
     h1
-      font-size: 8vh
+      font-size: 400%
       margin-top: 2vh
       margin-bottom: 0
       @media #{base.$smallscreen}
         font-size: 10vw
       @media #{base.$widescreen}
         float: left
-        font-size: 5vw
+        font-size: 800%
         line-height: 5vw
         margin-top: 2vw
     h2
-      font-size: 4vh
+      font-size: 200%
       @media #{base.$smallscreen}
         font-size: 6vw
       @media #{base.$widescreen}
-        font-size: 3vw
+        font-size: 400%
         line-height: 5vw
         float: right
       font-weight: 100

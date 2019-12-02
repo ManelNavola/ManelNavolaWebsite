@@ -59,9 +59,11 @@
   ::-webkit-scrollbar
     width: base.$scrollbarSize
     position: fixed
+    @media #{base.$mobileFit}
+      display: none
     
   ::-webkit-scrollbar-track
-    display: hidden
+    display: none
     margin-top: base.$topBarHeight*1.4
     @media #{base.$smallscreen}
       margin-top: base.$smallscreenHeight*1.4
@@ -88,7 +90,6 @@
     width: 100%
     height: base.$topBarHeight + 2vmin
     background-color: base.$topBarColor
-    border-right: base.$scrollbarSize solid darken(base.$topBarColor, 5%)
     z-index: 99
     @media #{base.$smallscreen}
       height: base.$smallscreenHeight + 8px
@@ -107,7 +108,7 @@
     transform-origin: 0% 50%
     background-color: base.$cdb
     cursor: pointer
-    transition: height base.$screenFitTime, line-height base.$screenFitTime, transform 0.25s, color 0.25s, margin 0.25s
+    transition: transform 0.25s, color 0.25s, margin 0.25s
     @media #{base.$smallscreen}
       height: base.$smallscreenHeight
       line-height: base.$smallscreenHeight
@@ -128,7 +129,6 @@
     float: left
     display: block
     padding: 0 8px 0 0
-    transition: width 0.2s, height 0.2s
     @media #{base.$smallscreen}
       width: base.$smallscreenHeight
       height: base.$smallscreenHeight
@@ -143,7 +143,6 @@
     font-size: 2.8vh
     display: inline-block
     padding: 0 8px 0 0
-    transition: font-size base.$screenFitTime
     @media screen and (max-width: base.$smallscreenTrigger*0.67)
       font-size: base.$smallscreenHeight/2.3
     @media screen and (min-aspect-ratio: 2/1)
@@ -159,7 +158,7 @@
     height: 100%
     background-color: base.$cdb
     transition: filter base.$screenFitTime, transform base.$screenFitTime
-    @media screen and (orientation: portrait)
+    @media #{base.$mobileFit}
       filter: opacity(0%)
       transform: translate(0, -100%)
       pointer-events: none
@@ -173,13 +172,13 @@
       height: 100%
       font-size: 2.4vh
       border-left: 1px solid rgba(255, 255, 255, 0.5)
-      line-height: base.$topBarHeight*1.3
+      line-height: base.$topBarHeight*1.5
       background-color: lighten(base.$topBarColor, 3%)
       transition: background-color 0.25
       @media #{base.$smallscreen}
-        line-height: base.$smallscreenHeight*1.3
+        line-height: base.$smallscreenHeight*1.5
       @media #{base.$widescreen}
-        line-height: base.$widescreenHeight*1.3
+        line-height: base.$widescreenHeight*1.5
       @media screen and (any-hover: hover)
         &:hover
           @include topSidebarButtonHighlight
@@ -219,9 +218,11 @@
     width: base.$topBarHeight*base.$menuButtonScale
     height: base.$topBarHeight*base.$menuButtonScale
     transition: filter base.$screenFitTime, transform base.$screenFitTime
-    @media screen and (orientation: landscape)
-        filter: opacity(0%)
-        transform: translate(100%, 0)
+    filter: opacity(0%)
+    transform: translate(100%, 0)
+    @media #{base.$mobileFit}
+        filter: opacity(100%)
+        transform: translate(0, 0)
     @media #{base.$smallscreen}
       width: base.$smallscreenHeight*base.$menuButtonScale
       height: base.$smallscreenHeight*base.$menuButtonScale
