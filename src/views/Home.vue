@@ -6,7 +6,9 @@
     </div>
     <div id="gridList">
       
-      <portfolioRow title="Web Development" subtitle="HTML, CSS, Javascript, Vue js, Node js" text="hola wapos" imgURL="webDev.jpg"/>
+      <portfolioRow title="Web Development" subtitle="HTML, CSS, Javascript, Vue js, Node js" text="Web design using the latest libraries" imgURL="webDev.jpg"/>
+      
+      <portfolioRow title="Music Production" subtitle="FL Studio" text="I also make music!" imgURL="flStudio.jpg"/>
       
     </div>
   </div>
@@ -32,9 +34,7 @@
     font-size: 2vh
   
   #gridList
-    margin: 15vh 8vw 0 8vw
-    @media #{base.$smallscreen}
-      margin-top: 2vh
+    margin: 0 5vw 0 5vw
   
   #header
     display: inline-block

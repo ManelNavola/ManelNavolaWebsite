@@ -13,14 +13,14 @@
         <router-link v-for="route in $router.options.routes" :key="route.path" :to="route.path">{{ route.name }}</router-link>
       </nav>
       
-      <img id="menuButton" draggable="false" src="./assets/menu.png" alt="Right menu icon" width="128px" height="128px" v-on:click="rightMenuOpen = !rightMenuOpen"/>
-      
-      <transition name="sweepFromRight">
-        <nav id="bottomSidebar" v-if="rightMenuOpen">
-          <router-link v-for="route in $router.options.routes" :key="route.path" :to="route.path">{{ route.name }}</router-link>
-        </nav>
-      </transition>
+      <img id="menuButton" draggable="false" src="./assets/menu.png" alt="Right menu icon" width="128px" height="128px" v-on:click="rightMenuOpen = !rightMenuOpen" :class="{rightMenuOpenSideways: rightMenuOpen}"/>
     </div>
+    
+    <transition name="sweepFromRight">
+      <nav id="bottomSidebar" :class="{bottomSidebarClosed: !rightMenuOpen}">
+        <router-link v-for="route in $router.options.routes" :key="route.path" :to="route.path">{{ route.name }}</router-link>
+      </nav>
+    </transition>
     
     <router-view id="routerView"/>
   </div>
@@ -31,13 +31,22 @@
     name: 'App',
     data() {
       return {
-        rightMenuOpen: false
+        rightMenuOpen: false,
+        lastTimeout: null
       }
     },
     metaInfo: {
       title: '...',
       titleTemplate: '%s | Manel Navola'
-    }
+    },
+    watch: {
+      $route: function() {
+        clearTimeout(this.lastTimeout);
+        this.lastTimeout = setTimeout(() => {
+          this.rightMenuOpen = false;
+        }, 100)
+      }
+    } 
   }
 </script>
 
@@ -47,7 +56,7 @@
   html
     background-color: base.$backgroundColor
     @media screen and (orientation: portrait)
-      background-color: darken(base.$backgroundColor, 100%)
+      background-color: darken(base.$backgroundColor, 2%)
     user-select: none
     color: white
     overflow-x: none
@@ -55,7 +64,7 @@
   
   body
     margin: 0
-  
+    
   ::-webkit-scrollbar
     width: base.$scrollbarSize
     position: fixed
@@ -63,7 +72,7 @@
       display: none
     
   ::-webkit-scrollbar-track
-    display: none
+    display: hidden
     margin-top: base.$topBarHeight*1.4
     @media #{base.$smallscreen}
       margin-top: base.$smallscreenHeight*1.4
@@ -71,7 +80,7 @@
       margin-top: base.$widescreenHeight*1.4
   
   ::-webkit-scrollbar-thumb
-    background: rgba(150, 200, 255, 0.2)
+    background: rgba(100, 150, 255, 0.2)
     border-radius: 7px
   
   #routerView
@@ -90,6 +99,8 @@
     width: 100%
     height: base.$topBarHeight + 2vmin
     background-color: base.$topBarColor
+    border-right: base.$scrollbarSize solid base.$topBarColor
+    border-top-right-radius: base.$topBarHeight*0.2
     z-index: 99
     @media #{base.$smallscreen}
       height: base.$smallscreenHeight + 8px
@@ -97,7 +108,7 @@
       height: base.$widescreenHeight + 0.8vw
   
   @mixin logoWrapperHighlight
-    color: #CFFFFF
+    color: base.$linkHighlightColor
     transform: scale(1.08, 1.08)
   
   #logoWrapper
@@ -140,17 +151,17 @@
     font-weight: 400
     padding: 0
     margin: 0
-    font-size: 2.8vh
+    font-size: 180%
     display: inline-block
     padding: 0 8px 0 0
     @media screen and (max-width: base.$smallscreenTrigger*0.67)
-      font-size: base.$smallscreenHeight/2.3
+      font-size: 3vh
     @media screen and (min-aspect-ratio: 2/1)
-      font-size: 120%
+      font-size: 250%
   
   @mixin topSidebarButtonHighlight
     background-color: lighten(base.$topBarColor, 6%)
-  
+    
   #topSidebar
     position: relative
     float: right
@@ -172,27 +183,38 @@
       height: 100%
       font-size: 2.4vh
       border-left: 1px solid rgba(255, 255, 255, 0.5)
-      line-height: base.$topBarHeight*1.5
+      line-height: base.$topBarHeight*1.35
       background-color: lighten(base.$topBarColor, 3%)
       transition: background-color 0.25
       @media #{base.$smallscreen}
-        line-height: base.$smallscreenHeight*1.5
+        line-height: base.$smallscreenHeight*1.35
       @media #{base.$widescreen}
-        line-height: base.$widescreenHeight*1.5
+        line-height: base.$widescreenHeight*1.35
       @media screen and (any-hover: hover)
         &:hover
           @include topSidebarButtonHighlight
       @media screen and (any-hover: none)
         &:active
           @include topSidebarButtonHighlight
+    a.router-link-exact-active
+      color: base.$linkHighlightColor
+      background-color: lighten(base.$topBarColor, 8%)
   
+  .bottomSidebarClosed
+    transform: translate(0, -100%)
+          
   #bottomSidebar
     position: fixed
-    left: 0
-    background-color: base.$verticalMenuColor
-    width: 100%
+    left: 1%
+    background-color: darken(base.$topBarColor, 15%)
+    border-bottom: 0.5vh solid darken(base.$topBarColor, 15%)
+    border-bottom-left-radius: 4vw
+    border-bottom-right-radius: 4vw
+    width: 98%
     margin: 2vmin 0 0 0
+    z-index: 0
     top: base.$topBarHeight
+    transition: transform 0.4s
     @media #{base.$smallscreen}
       top: base.$smallscreenHeight
     @media #{base.$widescreen}
@@ -205,10 +227,16 @@
       padding: 8px 8px 8px 5vw
       width: 100%
       display: block
+    a.router-link-exact-active
+      color: base.$linkHighlightColor
   
   @mixin menuButtonHighlight
-    transform: scale(1.08, 1.08)  rotate(-10deg)
+    filter: invert(20%)
   
+  .rightMenuOpenSideways
+    transform: rotate(90deg) !important
+    filter: invert(50%) !important
+    
   #menuButton
     position: absolute
     display: block
