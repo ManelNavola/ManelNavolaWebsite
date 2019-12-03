@@ -41,8 +41,8 @@
     margin-left: 10%
     width: 80%
     text-align: center
-    border-bottom: 0.15vh solid
-    border-radius: 0.15vh
+    border-bottom: 0.17vh solid
+    border-radius: 0.17vh
     transition: font-size base.$screenFitTime
     h1
       font-size: 400%
@@ -52,7 +52,7 @@
         font-size: 10vw
       @media #{base.$widescreen}
         float: left
-        font-size: 800%
+        font-size: 600%
         line-height: 5vw
         margin-top: 2vw
     h2
@@ -60,7 +60,7 @@
       @media #{base.$smallscreen}
         font-size: 6vw
       @media #{base.$widescreen}
-        font-size: 400%
+        font-size: 300%
         line-height: 5vw
         float: right
       font-weight: 100

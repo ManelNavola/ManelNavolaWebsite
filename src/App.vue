@@ -101,7 +101,7 @@
     background-color: base.$topBarColor
     border-right: base.$scrollbarSize solid base.$topBarColor
     border-top-right-radius: base.$topBarHeight*0.2
-    z-index: 99
+    z-index: 100
     @media #{base.$smallscreen}
       height: base.$smallscreenHeight + 8px
     @media #{base.$widescreen}
@@ -151,12 +151,12 @@
     font-weight: 400
     padding: 0
     margin: 0
-    font-size: 180%
+    font-size: 150%
     display: inline-block
     padding: 0 8px 0 0
-    @media screen and (max-width: base.$smallscreenTrigger*0.67)
-      font-size: 3vh
-    @media screen and (min-aspect-ratio: 2/1)
+    @media #{base.$smallscreen}
+      font-size: 150%
+    @media #{base.$widescreen}
       font-size: 250%
   
   @mixin topSidebarButtonHighlight
@@ -167,13 +167,13 @@
     float: right
     display: inline-block
     height: 100%
-    background-color: base.$cdb
     transition: filter base.$screenFitTime, transform base.$screenFitTime
     @media #{base.$mobileFit}
       filter: opacity(0%)
       transform: translate(0, -100%)
       pointer-events: none
     a
+      vertical-align: top
       text-decoration: none
       color: white
       padding: 0 16px 0 16px

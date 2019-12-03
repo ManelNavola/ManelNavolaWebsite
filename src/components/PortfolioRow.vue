@@ -1,11 +1,13 @@
 <template>
   <div class="portfolioRow">
     <h1>{{ title }}</h1>
-    <div>
+    <div class="portfolioText">
       <h2>{{ subtitle }}</h2>
       <p>{{ text }}</p>
     </div>
-    <img :src="getImgUrl(imgURL)"/>
+    <div class="portfolioImage">
+      <img :src="getImgUrl(imgURL)"/>
+    </div>
   </div>
 </template>
     
@@ -29,10 +31,7 @@
     margin: 10vh 0 10vh 0
     grid-template-columns: 4fr 5fr
     grid-template-rows: auto 1fr
-    @media screen and (min-aspect-ratio: 2/1)
-      padding: 0 20vh 0 20vh
-    @media #{base.$widescreen}
-      padding: 0 25vh 0 25vh
+    padding: 0 5vw 0 5vw
     @media #{base.$smallscreen}
       grid-template-columns: 1fr
       grid-template-rows: auto auto 1fr
@@ -46,7 +45,7 @@
         grid-column: 1
       @media #{base.$widescreen}
         font-size: 300%
-    div
+    .portfolioText
       grid-row: 2
       grid-column: 1
       @media #{base.$smallscreen}
@@ -66,14 +65,16 @@
           font-size: 80%
         @media #{base.$widescreen}
           font-size: 140%
-    img
+    .portfolioImage
+      margin: auto
       grid-row: 1 / 3
       grid-column: 2
-      width: 100%
-      filter: drop-shadow(10px 10px 4px black)
       @media #{base.$smallscreen}
         width: 100%
         height: auto
         grid-row: 2
         grid-column: 1
+      img
+        width: 100%
+        filter: drop-shadow(10px 10px 4px black)
 </style>
