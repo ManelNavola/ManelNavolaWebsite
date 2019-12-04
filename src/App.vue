@@ -4,13 +4,13 @@
     <div id="pageBackground"/>
     
     <div id="topBar">
-      <div id="logoWrapper" v-on:click="$router.push('/')">
+      <div id="logoWrapper" v-on:click="goToHome">
         <img id="logo" draggable="false" src="./assets/logo_128.png" alt="Manel Navola logo" width="128px" height="128px"/>
         <h1 id="logoText">Manel Navola</h1>
       </div>
       
       <nav id="topSidebar">
-        <router-link v-for="route in $router.options.routes" :key="route.path" :to="route.path">{{ route.name }}</router-link>
+        <router-link v-for="route in $router.options.routes" :key="route.path" :to="route.path"><button v-on:click="scrollToTop">{{ route.name }}</button></router-link>
       </nav>
       
       <img id="menuButton" draggable="false" src="./assets/menu.png" alt="Right menu icon" width="128px" height="128px" v-on:click="rightMenuOpen = !rightMenuOpen" :class="{rightMenuOpenSideways: rightMenuOpen}"/>
@@ -35,6 +35,15 @@
         lastTimeout: null
       }
     },
+    methods: {
+      scrollToTop() {
+        window.scrollTo(0, 0);
+      },
+      goToHome() {
+        this.$router.push('/');
+        window.scrollTo(0, 0);
+      }
+    },
     metaInfo: {
       title: '...',
       titleTemplate: '%s | Manel Navola'
@@ -57,9 +66,9 @@
     background-color: base.$backgroundColor
     @media screen and (orientation: portrait)
       background-color: darken(base.$backgroundColor, 2%)
-    user-select: none
     color: white
     overflow-x: none
+    user-select: none
     font-family: base.$mainFont
   
   body
@@ -101,7 +110,7 @@
     z-index: 300
   
   @mixin logoWrapperHighlight
-    filter: invert(100%)
+    color: black
     transform: scale(1.08, 1.08)
   
   #logoWrapper
@@ -146,8 +155,9 @@
     padding: 0 8px 0 0
   
   @mixin topSidebarButtonHighlight
-    filter: invert(100%)
-    
+    color: black
+    cursor: pointer
+  
   #topSidebar
     position: relative
     float: right
@@ -159,28 +169,32 @@
       transform: translate(0, -100%)
       pointer-events: none
     a
-      vertical-align: top
-      text-decoration: none
-      color: white
-      padding: 0 16px 0 16px
-      margin: 0 0 0 0
       display: inline-block
-      text-align: center
       height: 100%
-      font-size: 2.4vh
       border-left: 1px solid rgba(255, 255, 255, 0.5)
-      line-height: base.$topBarHeight
-      transition: filter 0.25s
-      @media #{base.$smallscreen}
-        line-height: base.$smallscreenHeight
-      @media #{base.$widescreen}
-        line-height: base.$widescreenHeight
-      @media screen and (any-hover: hover)
-        &:hover
-          @include topSidebarButtonHighlight
-      @media screen and (any-hover: none)
-        &:active
-          @include topSidebarButtonHighlight
+      button
+        color: white
+        font-size: 120%
+        font-family: base.$mainFont
+        padding: 0 16px 0 16px
+        background-color: rgba(0,0,0,0)
+        width: 100%
+        height: 100%
+        border: none
+        line-height: base.$topBarHeight
+        transition: filter 0.25s
+        @media #{base.$smallscreen}
+          line-height: base.$smallscreenHeight
+        @media #{base.$widescreen}
+          line-height: base.$widescreenHeight
+        @media screen and (any-hover: hover)
+          &:hover
+            @include topSidebarButtonHighlight
+        @media screen and (any-hover: none)
+          &:active
+            @include topSidebarButtonHighlight
+        &:focus
+          outline: 0
     //a.router-link-exact-active
   
   .bottomSidebarClosed
@@ -240,12 +254,4 @@
     @media screen and (any-hover: none)
       &:active
         @include menuButtonHighlight
-        
-  #pageBackground
-    position: fixed
-    filter: opacity(20%)
-    top: 0
-    left: 0
-    width: 100vw
-    height: 100vh
 </style>
