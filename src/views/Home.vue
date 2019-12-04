@@ -21,6 +21,40 @@
     components: {
       PortfolioRow
     },
+    methods: {
+      handleScroll() {
+        var rows = this.$el.getElementsByClassName("portfolioRow");
+        var mid = window.innerHeight/2.0;
+        var midSide = window.innerHeight/2.0;
+        for (var i = 0; i < rows.length; i++) {
+          var items = rows[i].getElementsByClassName("portfolioImage");
+          if (items.length == 0) continue;
+          var item = items[0];
+          var rect = item.getBoundingClientRect();
+          var itemY = rect.y + rect.height/2.0;
+          if (rect.height != 0) {
+            if (itemY > mid - midSide*0.57 && itemY < mid + midSide*0.57) {
+              item.style.transform = "scale(1.05, 1.05)";
+              item.style.filter = "blur(0px) drop-shadow(10px 10px 4px black)";
+              rows[i].style.color = "white";
+            } else {
+              item.style.transform = "scale(1, 1)";
+              item.style.filter = "blur(2px) drop-shadow(10px 10px 4px black)";
+              rows[i].style.color = "#999";
+            }
+          }
+        }
+      }
+    },
+    created() {
+      window.addEventListener('scroll', this.handleScroll);
+      for (var i = 0; i < 10; i++) {
+        setTimeout(this.handleScroll, i*100);
+      }
+    },
+    destroyed() {
+      window.removeEventListener('scroll', this.handleScroll);
+    },
     metaInfo: {
       title: 'Home'
     }
@@ -34,7 +68,7 @@
     font-size: 2vh
   
   #gridList
-    margin: 0 5vw 0 5vw
+    margin: 0 4vw 0 4vw
   
   #header
     display: inline-block

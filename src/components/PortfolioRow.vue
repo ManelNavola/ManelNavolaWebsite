@@ -6,7 +6,7 @@
       <p>{{ text }}</p>
     </div>
     <div class="portfolioImage">
-      <img :src="getImgUrl(imgURL)"/>
+      <img :src="getImgUrl(imgURL)" draggable="false"/>
     </div>
   </div>
 </template>
@@ -18,32 +18,7 @@
     methods: {
       getImgUrl(pic) {
         return require('../assets/' + pic)
-      },
-      handleScroll() {
-        var images = this.$el.getElementsByClassName("portfolioImage");
-        var mid = window.innerHeight/2.0;
-        var midSide = window.innerHeight/2.0;
-        if (images.length == 1) {
-          var item = images.item(images[0]);
-          var rect = item.getBoundingClientRect();
-          var itemY = rect.y + rect.height/2.0;
-          if (rect.height != 0) {
-            if (itemY > mid - midSide*0.5 && itemY < mid + midSide*0.5) {
-              item.style.transform = "scale(1.05, 1.05)";
-              this.$el.style.color = "white";
-            } else {
-              item.style.transform = "scale(1, 1)";
-              this.$el.style.color = "#999";
-            }
-          }
-        }
       }
-    },
-    created () {
-      window.addEventListener('scroll', this.handleScroll);
-    },
-    destroyed () {
-      window.removeEventListener('scroll', this.handleScroll);
     }
   }
 </script>
@@ -53,11 +28,12 @@
 
   .portfolioRow
     display: grid
-    margin: 10vh 0 10vh 0
+    margin: 12vh 0 12vh 0
     grid-template-columns: 4fr 5fr
     grid-template-rows: auto 1fr
     padding: 0 5vw 0 5vw
     transition: color 0.25s
+    color: gray
     @media #{base.$mobileFit}
       color: white !important
     @media #{base.$smallscreen}
@@ -104,9 +80,10 @@
         height: auto
         grid-row: 2
         grid-column: 1
+      transform: translate3d(0,0,0)
+      transform: translateZ(0)
       transform-origin: 100% 100%
-      transition: all 0.25s
-      filter: drop-shadow(10px 10px 4px black)
+      transition: transform 0.25s, filter 0.25s
       @media #{base.$mobileFit}
         transform: scale(1, 1) !important
       img

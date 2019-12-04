@@ -10,7 +10,7 @@
       </div>
       
       <nav id="topSidebar">
-        <router-link v-for="route in $router.options.routes" :key="route.path" :to="route.path"><button v-on:click="scrollToTop">{{ route.name }}</button></router-link>
+        <router-link v-for="route in $router.options.routes" :key="route.absPath" :to="route.absPath"><button v-on:click="scrollToTop">{{ route.name }}</button></router-link>
       </nav>
       
       <img id="menuButton" draggable="false" src="./assets/menu.png" alt="Right menu icon" width="128px" height="128px" v-on:click="rightMenuOpen = !rightMenuOpen" :class="{rightMenuOpenSideways: rightMenuOpen}"/>
@@ -18,11 +18,11 @@
     
     <transition name="sweepFromRight">
       <nav id="bottomSidebar" :class="{bottomSidebarClosed: !rightMenuOpen}">
-        <router-link v-for="route in $router.options.routes" :key="route.path" :to="route.path">{{ route.name }}</router-link>
+        <router-link v-for="route in $router.options.routes" :key="route.absPath" :to="route.absPath">{{ route.name }}</router-link>
       </nav>
     </transition>
     
-    <router-view id="routerView"/>
+    <router-view class="routerView"/>
   </div>
 </template>
 
@@ -40,8 +40,8 @@
         window.scrollTo(0, 0);
       },
       goToHome() {
-        this.$router.push('/');
-        window.scrollTo(0, 0);
+        this.$router.push('/home');
+        this.scrollToTop();
       }
     },
     metaInfo: {
@@ -61,7 +61,7 @@
 
 <style lang="sass">
   @use '@/base'
-  
+
   html
     background-color: base.$backgroundColor
     @media screen and (orientation: portrait)
@@ -70,6 +70,7 @@
     overflow-x: none
     user-select: none
     font-family: base.$mainFont
+    scroll-behavior: smooth
   
   body
     margin: 0
@@ -87,7 +88,7 @@
     background: lighten(base.$backgroundColor, 10%)
     border-radius: 7px
   
-  #routerView
+  .routerView
     margin-top: base.$topBarHeight
     padding: 2vh 2vw 2vh 2vw
     transition: top base.$screenFitTime
@@ -157,6 +158,7 @@
   @mixin topSidebarButtonHighlight
     color: black
     cursor: pointer
+    font-size: 130%
   
   #topSidebar
     position: relative
@@ -182,7 +184,7 @@
         height: 100%
         border: none
         line-height: base.$topBarHeight
-        transition: filter 0.25s
+        transition: color 0.25s, cursor 0.25s, font-size 0.25s
         @media #{base.$smallscreen}
           line-height: base.$smallscreenHeight
         @media #{base.$widescreen}
@@ -195,11 +197,12 @@
             @include topSidebarButtonHighlight
         &:focus
           outline: 0
-    //a.router-link-exact-active
+    a.router-link-exact-active
+      background-color: rgba(255, 255, 255  , 0.2)
   
   .bottomSidebarClosed
     transform: translate(0, -110%)
-          
+  
   #bottomSidebar
     position: fixed
     left: 1%
