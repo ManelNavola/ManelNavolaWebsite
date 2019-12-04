@@ -48,6 +48,7 @@
     .portfolioText
       grid-row: 2
       grid-column: 1
+      margin-right: 5%
       @media #{base.$smallscreen}
         grid-row: 3
         grid-column: 1
