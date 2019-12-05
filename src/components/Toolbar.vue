@@ -108,7 +108,7 @@
   #logoText
     font-weight: 400
     margin: 0
-    font-size: 150%
+    font-size: 3vmax
     display: inline-block
     padding: 0 8px 0 0
     @media #{base.$widescreen}
@@ -175,13 +175,15 @@
     top: base.$topBarHeight
     transition: transform 0.4s
     display: none
+    @media #{base.$mobileFit}
+      display: block
     @media #{base.$smallscreen}
       top: base.$smallscreenHeight
       display: block
     a
       text-decoration: none
       color: white
-      font-size: 100%
+      font-size: 2vmax
       border-top: solid 1px rgba(255, 255, 255, 0.5)
       padding: 8px 8px 8px 5vw
       max-width: 100%
@@ -199,7 +201,7 @@
   
   #menuButton
     position: fixed
-    right: 2px
+    right: 3px
     top: 0
     box-sizing: border-box
     cursor: pointer
@@ -223,7 +225,11 @@
       &:active
         @include menuButtonHighlight
     .menuButtonBar1Open
-      transform: translate(0%, base.$smallscreenHeight*0.27) rotate(45deg)
+      transform: translate(0%, base.$topBarHeight*0.27) rotate(45deg)
+      @media #{base.$widescreen}
+        transform: translate(0%, base.$widescreenHeight*0.27) rotate(45deg)
+      @media #{base.$smallscreen}
+        transform: translate(0%, base.$smallscreenHeight*0.27) rotate(45deg)
     #menuButtonBar1
       position: absolute
       top: 15%
@@ -232,7 +238,11 @@
       height: auto
       transition: transform 0.25s
     .menuButtonBar2Open
-      transform: translate(0%, base.$smallscreenHeight*-0.27) rotate(-45deg)
+      transform: translate(0%, base.$topBarHeight*-0.27) rotate(-45deg)
+      @media #{base.$widescreen}
+        transform: translate(0%, base.$widescreenHeight*-0.27) rotate(-45deg)
+      @media #{base.$smallscreen}
+        transform: translate(0%, base.$smallscreenHeight*-0.27) rotate(-45deg)
     #menuButtonBar2
       position: absolute
       bottom: 15%
@@ -249,27 +259,4 @@
       width: 96%
       height: auto
       transition: transform 0.25s
-      
-  /*#menuButton
-    position: fixed
-    right: 0
-    top: 0
-    width: auto
-    height: base.$topBarHeight
-    filter: opacity(0%)
-    transform: translate(100%, 0)
-    transition: filter base.$screenFitTime, transform base.$screenFitTime
-    @media #{base.$mobileFit}
-      filter: opacity(100%)
-      transform: translate(0, 0)
-    @media #{base.$widescreen}
-      height: base.$widescreenHeight
-    @media #{base.$smallscreen}
-      height: base.$smallscreenHeight
-    @media screen and (any-hover: hover)
-      &:hover
-        @include menuButtonHighlight
-    @media screen and (any-hover: none)
-      &:active
-        @include menuButtonHighlight*/
 </style>

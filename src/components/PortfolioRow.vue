@@ -44,7 +44,7 @@
       grid-row: 1
       grid-column: 1
       @media #{base.$smallscreen}
-        font-size: 120%
+        font-size: 130%
         grid-row: 1
         grid-column: 1
       @media #{base.$widescreen}
@@ -60,14 +60,14 @@
         font-size: 150%
         font-weight: 300
         @media #{base.$smallscreen}
-          font-size: 100%
+          font-size: 110%
         @media #{base.$widescreen}
           font-size: 200%
       p
         font-size: 100%
         font-weight: 200
         @media #{base.$smallscreen}
-          font-size: 80%
+          font-size: 100%
         @media #{base.$widescreen}
           font-size: 140%
         

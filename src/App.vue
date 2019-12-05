@@ -36,6 +36,7 @@
     font-family: base.$mainFont
     scroll-behavior: smooth
     image-scaling: smooth
+    -webkit-tap-highlight-color: transparent
   
   body
     margin: 0
