@@ -7,15 +7,13 @@ export default new VueRouter({
   mode: 'history',
   routes: [
     {
-      path: '/(home|)',
+      path: '/',
       name: 'Home',
-      absPath: '/home',
       component: Home
     },
     {
       path: '/songs',
       name: 'Songs',
-      absPath: '/songs',
       component: Songs
     }
   ]

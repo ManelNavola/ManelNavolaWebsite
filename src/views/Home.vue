@@ -26,6 +26,7 @@
         var rows = this.$el.getElementsByClassName("portfolioRow");
         var mid = window.innerHeight/2.0;
         var midSide = window.innerHeight/2.0;
+        var foundOne = false;
         for (var i = 0; i < rows.length; i++) {
           var items = rows[i].getElementsByClassName("portfolioImage");
           if (items.length == 0) continue;
@@ -33,10 +34,11 @@
           var rect = item.getBoundingClientRect();
           var itemY = rect.y + rect.height/2.0;
           if (rect.height != 0) {
-            if (itemY > mid - midSide*0.57 && itemY < mid + midSide*0.57) {
-              item.style.transform = "scale(1.05, 1.05)";
-              item.style.filter = "blur(0px) drop-shadow(10px 10px 4px black)";
+            if (!foundOne && itemY > mid - midSide*0.45) {
+              item.style.transform = "scale(1.05, 1.05) translate(-5px, -5px)";
+              item.style.filter = "blur(0px) drop-shadow(15px 15px 4px black)";
               rows[i].style.color = "white";
+              foundOne = true;
             } else {
               item.style.transform = "scale(1, 1)";
               item.style.filter = "blur(2px) drop-shadow(10px 10px 4px black)";
@@ -83,7 +85,7 @@
       margin-top: 2vh
       margin-bottom: 0
       @media #{base.$smallscreen}
-        font-size: 10vw
+        font-size: 10vmin
       @media #{base.$widescreen}
         float: left
         font-size: 600%
@@ -92,7 +94,7 @@
     h2
       font-size: 200%
       @media #{base.$smallscreen}
-        font-size: 6vw
+        font-size: 6vmin
       @media #{base.$widescreen}
         font-size: 300%
         line-height: 5vw

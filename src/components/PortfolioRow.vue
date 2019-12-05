@@ -75,17 +75,21 @@
       margin: auto
       grid-row: 1 / 3
       grid-column: 2
+      transform: translate3d(0,0,0)
+      transform: translateZ(0)
+      transform-origin: 100% 100%
+      transition: transform 0.25s, filter 0.25s
       @media #{base.$smallscreen}
         width: 100%
         height: auto
         grid-row: 2
         grid-column: 1
-      transform: translate3d(0,0,0)
-      transform: translateZ(0)
-      transform-origin: 100% 100%
-      transition: transform 0.25s, filter 0.25s
       @media #{base.$mobileFit}
         transform: scale(1, 1) !important
+        filter: drop-shadow(10px 10px 4px black) !important
       img
+        @media #{base.$smallscreen}
+          margin: 1vmax 0 1vmax 0
         width: 100%
+        max-width: 110vh
 </style>
