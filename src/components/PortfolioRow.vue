@@ -28,7 +28,7 @@
 
   .portfolioRow
     display: grid
-    margin: 12vh 0 12vh 0
+    margin: 20vh 4vw 20vh 4vw
     grid-template-columns: 4fr 5fr
     grid-template-rows: auto 1fr
     padding: 0 5vw 0 5vw
@@ -64,19 +64,17 @@
         @media #{base.$widescreen}
           font-size: 200%
       p
-        font-size: 100%
-        font-weight: 200
+        font-size: 110%
+        font-weight: 300
         @media #{base.$smallscreen}
-          font-size: 100%
+          font-size: 110%
         @media #{base.$widescreen}
-          font-size: 140%
+          font-size: 160%
         
     .portfolioImage
       margin: auto
       grid-row: 1 / 3
       grid-column: 2
-      transform: translate3d(0,0,0)
-      transform: translateZ(0)
       transform-origin: 100% 100%
       transition: transform 0.25s, filter 0.25s
       @media #{base.$smallscreen}
@@ -88,6 +86,8 @@
         transform: scale(1, 1) !important
         filter: drop-shadow(10px 10px 4px black) !important
       img
+        transform: translate3d(0,0,0)
+        transform: translateZ(0)
         @media #{base.$smallscreen}
           margin: 1vmax 0 1vmax 0
         width: 100%

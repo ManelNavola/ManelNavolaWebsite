@@ -2,14 +2,13 @@
   <div id="home">
     <div id="header">
       <h1>Manel Navola</h1>
-      <h2>Programmer & Music Producer</h2>
+      <h2>Developer & Music Producer</h2>
     </div>
-    <div id="gridList">
+    <div id="portfolioList">
       
       <portfolioRow title="Web Development" subtitle="HTML, CSS, Javascript, Vue js, Node js" text="Web design using the latest libraries" imgURL="webDev.jpg"/>
       
       <portfolioRow title="Music Production" subtitle="FL Studio" text="I also make music!" imgURL="flStudio.jpg"/>
-      
     </div>
   </div>
 </template>
@@ -34,7 +33,7 @@
           var rect = item.getBoundingClientRect();
           var itemY = rect.y + rect.height/2.0;
           if (rect.height != 0) {
-            if (!foundOne && itemY > mid - midSide*0.45) {
+            if (!foundOne && itemY > mid - midSide*0.5) {
               item.style.transform = "scale(1.05, 1.05) translate(-5px, -5px)";
               item.style.filter = "blur(0px) drop-shadow(15px 15px 4px black)";
               rows[i].style.color = "white";
@@ -65,14 +64,13 @@
 
 <style lang="sass">
   @use '@/base'
-  
+
   .smallText
     font-size: 2vh
   
-  #gridList
-    margin: 0 4vw 0 4vw
-  
   #header
+    padding: 0 4vw 0 4vw
+    box-sizing: border-box
     display: inline-block
     margin-left: 10%
     width: 80%
@@ -81,22 +79,22 @@
     border-radius: 0.17vh
     transition: font-size base.$screenFitTime
     h1
-      font-size: 400%
+      font-size: 600%
       margin-top: 2vh
       margin-bottom: 0
       @media #{base.$smallscreen}
         font-size: 10vmin
       @media #{base.$widescreen}
         float: left
-        font-size: 600%
+        font-size: 700%
         line-height: 5vw
         margin-top: 2vw
     h2
-      font-size: 200%
+      font-size: 300%
       @media #{base.$smallscreen}
         font-size: 6vmin
       @media #{base.$widescreen}
-        font-size: 300%
+        font-size: 400%
         line-height: 5vw
         float: right
       font-weight: 100

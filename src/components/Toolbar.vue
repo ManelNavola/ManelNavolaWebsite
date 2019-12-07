@@ -1,13 +1,9 @@
 <template>
   <div id="toolbar">
-    <div id="topBar">
-      <div id="logoWrapper" v-on:click="goToHome">
-        <img id="logo" draggable="false" src="@/assets/logo_128.png" alt="Manel Navola logo" width="128px" height="128px"/>
-        <h1 id="logoText">Manel Navola</h1>
-      </div>
+    <div id="topBar" ref="topBar">
       
       <nav id="topSidebar">
-        <router-link v-for="route in $router.options.routes" :key="route.path" :to="route.path"><button v-on:click="scrollToTop">{{ route.name }}</button></router-link>
+        <router-link v-for="route in $router.options.routes" :key="route.path" :to="route.path"><button @click="scrollToTop">{{ route.name }}</button></router-link>
       </nav>
       
       <div id="menuButton" v-on:click="rightMenuOpen = !rightMenuOpen">
@@ -15,7 +11,6 @@
         <img id="menuButtonBar2" draggable="false" :class="{menuButtonBar2Open: rightMenuOpen}" src="@/assets/menuBar.png"/>
         <img id="menuButtonBar3" draggable="false" :class="{menuButtonBar3Open: rightMenuOpen}" src="@/assets/menuBar.png"/>
       </div>
-      <!--<img id="menuButton" draggable="false" src="@/assets/menu.png" alt="Right menu icon" width="128px" height="128px" v-on:click="rightMenuOpen = !rightMenuOpen" :class="{rightMenuOpenSideways: rightMenuOpen}"/>-->
     </div>
     
     <transition name="sweepFromRight">
@@ -23,6 +18,7 @@
         <router-link v-for="route in $router.options.routes" :key="route.path" :to="route.path">{{ route.name }}</router-link>
       </nav>
     </transition>
+    
   </div>
 </template>
 
@@ -35,6 +31,24 @@
       }
     },
     methods: {
+      handleScroll() {
+        var topBar = this.$refs.topBar;
+        var rect = topBar.getBoundingClientRect();
+        var routerView = this.$parent.$refs.routerView.$el;
+        if (routerView) {
+          var rect2 = routerView.getBoundingClientRect();
+          if (rect.y < rect2.top) {
+            if (!topBar.classList.contains("topBarClosed"))
+              topBar.classList.add("topBarClosed");
+          } else {
+            if (topBar.classList.contains("topBarClosed"))
+              topBar.classList.remove("topBarClosed");
+          }
+        } else {
+          if (!topBar.classList.contains("topBarClosed"))
+              topBar.classList.add("topBarClosed");
+        }
+      },
       scrollToTop() {
         window.scrollTo(0, 0);
       },
@@ -42,6 +56,15 @@
         this.$router.push('/');
         this.scrollToTop();
       }
+    },
+    created() {
+      window.addEventListener('scroll', this.handleScroll);
+      for (var i = 0; i < 10; i++) {
+        setTimeout(this.handleScroll, i*100);
+      }
+    },
+    destroyed() {
+      window.removeEventListener('scroll', this.handleScroll);
     },
     watch: {
       $route: function() {
@@ -54,111 +77,74 @@
 <style lang="sass">
   @use '@/base'
 
+  .topBarClosed
+    @media #{base.$noMobileFit}
+      background-color: transparent !important
+      border-bottom: transparent !important
+
   #topBar
+    text-align: center
     position: fixed
     top: 0
-    width: 100%
+    width: 100vw
+    box-sizing: border-box
     background-color: base.$topBarColor
-    border-bottom: 1px solid rgba(255, 255, 255, 0.5)
+    border-bottom: 1px solid rgba(0, 0, 0, 0.5)
     height: base.$topBarHeight
+    z-index: 300
+    transition: background-color base.$transitionTime, border-bottom base.$transitionTime
+    @media #{base.$mobileFit}
+      transition: none
     @media #{base.$smallscreen}
       height: base.$smallscreenHeight
     @media #{base.$widescreen}
       height: base.$widescreenHeight
-    z-index: 300
   
   @mixin logoWrapperHighlight
     color: black
     transform: scale(1.08, 1.08)
   
-  #logoWrapper
-    height: 100%
-    max-height: 100%
-    box-sizing: border-box
-    line-height: base.$topBarHeight
-    display: inline-block
-    transform-origin: 0% 50%
-    cursor: pointer
-    transition: transform 0.25s, color 0.25s, margin 0.25s
-    @media #{base.$smallscreen}
-      line-height: base.$smallscreenHeight
-    @media #{base.$widescreen}
-      line-height: base.$widescreenHeight
-    @media screen and (any-hover: hover)
-      &:hover
-        @include logoWrapperHighlight
-    @media screen and (any-hover: none)
-      &:active
-        @include logoWrapperHighlight
-  
-  #logo
-    max-height: 100%
-    width: auto
-    float: left
-    display: inline-block
-    padding: 2%
-    box-sizing: border-box
-    @media #{base.$smallscreen}
-      width: base.$smallscreenHeight
-      height: base.$smallscreenHeight
-    @media #{base.$widescreen}
-      width: base.$widescreenHeight
-      height: base.$widescreenHeight
-  
-  #logoText
-    font-weight: 400
-    margin: 0
-    font-size: 3vmax
-    display: inline-block
-    padding: 0 8px 0 0
-    @media #{base.$widescreen}
-      font-size: 200%
-  
   @mixin topSidebarButtonHighlight
-    color: black
+    transform: scale(1.05, 1.05)
+    transform-origin: 50% 60%
+    color: #AFF
     cursor: pointer
-    font-size: 130%
   
   #topSidebar
-    position: relative
-    float: right
-    display: inline-block
-    height: 100%
     transition: filter base.$screenFitTime, transform base.$screenFitTime
     @media #{base.$mobileFit}
       filter: opacity(0%)
       transform: translate(0, -100%)
       pointer-events: none
     a
-      display: inline-block
-      height: 100%
-      border-left: 1px solid rgba(255, 255, 255, 0.5)
-      button
-        color: white
-        font-size: 120%
-        font-family: base.$mainFont
-        padding: 0 16px 0 16px
-        background-color: rgba(0,0,0,0)
-        width: 100%
-        height: 100%
-        border: none
-        line-height: base.$topBarHeight
-        transition: color 0.25s, cursor 0.25s, font-size 0.25s
-        @media #{base.$smallscreen}
-          line-height: base.$smallscreenHeight
-        @media #{base.$widescreen}
-          line-height: base.$widescreenHeight
-          font-size: 150%
-        @media screen and (any-hover: hover)
-          &:hover
-            @include topSidebarButtonHighlight
-        @media screen and (any-hover: none)
-          &:active
-            @include topSidebarButtonHighlight
-        &:focus
-          outline: 0
+      margin: 0 1vw 0 1vw
+    button
+      background-color: transparent
+      margin: 0
+      padding: 0
+      border: none
+      font-size: base.$topBarHeight*0.3
+      font-family: base.$mainFont
+      font-weight: 300
+      color: white
+      user-select: none
+      line-height: base.$topBarHeight
+      transition: transform base.$transitionTime, color base.$transitionTime
+      &:focus
+        outline: 0
+      @media #{base.$widescreen}
+        font-size: base.$widescreenHeight*0.3
+        line-height: base.$widescreenHeight
+      @media screen and (any-hover: hover)
+        &:hover
+          @include topSidebarButtonHighlight
+      @media screen and (any-hover: none)
+        &:active
+          @include topSidebarButtonHighlight
+        
     a.router-link-exact-active
-      background-color: rgba(255, 255, 255, 0.2)
+      button
+        text-decoration: underline
   
   .bottomSidebarClosed
     transform: translate(0, -110%)
@@ -166,14 +152,14 @@
   #bottomSidebar
     position: fixed
     left: 2%
-    background-color: darken(base.$topBarColor, 10%)
-    border-bottom: 0.5vh solid darken(base.$topBarColor, 10%)
+    background-color: lighten(base.$topBarColor, 15%)
+    border-bottom: 0.5vh solid lighten(base.$topBarColor, 15%)
     border-bottom-left-radius: 4vw
     border-bottom-right-radius: 4vw
     width: 96%
     z-index: 10
     top: base.$topBarHeight
-    transition: transform 0.4s
+    transition: transform base.$transitionTime
     display: none
     @media #{base.$mobileFit}
       display: block
@@ -184,7 +170,7 @@
       text-decoration: none
       color: white
       font-size: 2vmax
-      border-top: solid 1px rgba(255, 255, 255, 0.5)
+      border-top: solid 1px rgba(128,128,128, 0.5)
       padding: 8px 8px 8px 5vw
       max-width: 100%
       display: block
@@ -211,7 +197,7 @@
     transform: translate(100%, 0)
     @media #{base.$mobileFit}
       filter: opacity(100%)
-      transform: translate(0, 0) scale(0.9, 0.9)
+      transform: translate(0, 0) scale(0.8, 0.8)
     @media #{base.$widescreen}
       width: base.$widescreenHeight
       height: base.$widescreenHeight
@@ -236,7 +222,7 @@
       right: 2%
       width: 96%
       height: auto
-      transition: transform 0.25s
+      transition: transform base.$transitionTime
     .menuButtonBar2Open
       transform: translate(0%, base.$topBarHeight*-0.27) rotate(-45deg)
       @media #{base.$widescreen}
@@ -249,7 +235,7 @@
       right: 2%
       width: 96%
       height: auto
-      transition: transform 0.25s
+      transition: transform base.$transitionTime
     .menuButtonBar3Open
       transform: scale(0, 0)
     #menuButtonBar3
@@ -258,5 +244,5 @@
       right: 2%
       width: 96%
       height: auto
-      transition: transform 0.25s
+      transition: transform base.$transitionTime
 </style>

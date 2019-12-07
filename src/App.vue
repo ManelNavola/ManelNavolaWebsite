@@ -3,8 +3,9 @@
     
     <toolbar/>
     
-    <router-view class="routerView"/>
-    <br><br><br>
+    <transition name="fade">
+      <router-view class="routerView" ref="routerView"/>
+    </transition>
     
   </div>
 </template>
@@ -37,6 +38,7 @@
     scroll-behavior: smooth
     image-scaling: smooth
     -webkit-tap-highlight-color: transparent
+    overflow-x: hidden
   
   body
     margin: 0
@@ -48,18 +50,18 @@
       display: none
     
   ::-webkit-scrollbar-track
-    display: none
+    display: always
   
   ::-webkit-scrollbar-thumb
     background: lighten(base.$backgroundColor, 10%)
     border-radius: 7px
   
   .routerView
-    margin-top: base.$topBarHeight
-    padding: 2vh 2vw 2vh 2vw
+    position: relative
+    top: base.$topBarHeight
     transition: top base.$screenFitTime
     @media #{base.$smallscreen}
-      margin-top: base.$smallscreenHeight + 8px
+      margin-top: base.$smallscreenHeight
     @media #{base.$widescreen}
-      margin-top: base.$widescreenHeight + 0.8vw
+      margin-top: base.$widescreenHeight
 </style>
