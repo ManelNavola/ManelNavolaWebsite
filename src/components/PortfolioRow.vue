@@ -58,9 +58,9 @@
         grid-column: 1
       h2
         font-size: 150%
-        font-weight: 300
+        font-weight: 400
         @media #{base.$smallscreen}
-          font-size: 110%
+          font-size: 120%
         @media #{base.$widescreen}
           font-size: 200%
       p
@@ -73,10 +73,14 @@
         
     .portfolioImage
       margin: auto
+      min-width: 100%
       grid-row: 1 / 3
       grid-column: 2
       transform-origin: 100% 100%
       transition: transform 0.25s, filter 0.25s
+      box-sizing: border-box
+      max-width: 100%
+      overflow: hidden
       @media #{base.$smallscreen}
         width: 100%
         height: auto
@@ -86,10 +90,12 @@
         transform: scale(1, 1) !important
         filter: drop-shadow(10px 10px 4px black) !important
       img
-        transform: translate3d(0,0,0)
         transform: translateZ(0)
         @media #{base.$smallscreen}
           margin: 1vmax 0 1vmax 0
-        width: 100%
-        max-width: 110vh
+          min-width: 70vw !important
+          width: 60%
+          min-width: 0%
+        min-width: 100%
+        width: 40em
 </style>

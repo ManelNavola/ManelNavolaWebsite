@@ -1,27 +1,28 @@
 <template>
   <div id="home">
-    <div id="header">
-      <h1>Manel Navola</h1>
-      <h2>Developer & Music Producer</h2>
-    </div>
+    <Header title="Manel Navola" subtitle="Developer & Musician"/>
     <div id="portfolioList">
       
-      <portfolioRow title="Web Development" subtitle="HTML, CSS, Javascript, Vue js, Node js" text="Web design using the latest libraries" imgURL="webDev.jpg"/>
+      <PortfolioRow title="Web Development" subtitle="HTML, CSS, Javascript, Vue js, Node js" text="Web design using the latest libraries" imgURL="webDev.jpg"/>
       
-      <portfolioRow title="Music Production" subtitle="FL Studio" text="I also make music!" imgURL="flStudio.jpg"/>
+      <PortfolioRow title="Music Production" subtitle="FL Studio" text="I also make music!" imgURL="flStudio.jpg"/>
+      
+      <PortfolioRow title="App Development" subtitle="C#, Java, Eclipse, Netbeans, Scenebuilder, Visual Studio, Entity Framework" text="App development and design using the latest tools" imgURL="appDev.jpg"/>
     </div>
   </div>
 </template>
 
 <script>
-  import PortfolioRow from '@/components/PortfolioRow'
+  import PortfolioRow from '@/components/PortfolioRow';
+  import Header from '@/components/Header';
   export default {
     name: 'Home',
     components: {
-      PortfolioRow
+      PortfolioRow, Header
     },
     methods: {
       handleScroll() {
+        this.$parent.$refs.toolbar.handleScroll();
         var rows = this.$el.getElementsByClassName("portfolioRow");
         var mid = window.innerHeight/2.0;
         var midSide = window.innerHeight/2.0;
@@ -47,56 +48,18 @@
         }
       }
     },
-    created() {
-      window.addEventListener('scroll', this.handleScroll);
-      for (var i = 0; i < 10; i++) {
+    mounted() {
+      this.$el.addEventListener('scroll', this.handleScroll);
+      for (var i = 1; i < 10; i++) {
         setTimeout(this.handleScroll, i*100);
       }
+      this.handleScroll();
     },
     destroyed() {
-      window.removeEventListener('scroll', this.handleScroll);
+      this.$el.removeEventListener('scroll', this.handleScroll);
     },
     metaInfo: {
       title: 'Home'
     }
   }
 </script>
-
-<style lang="sass">
-  @use '@/base'
-
-  .smallText
-    font-size: 2vh
-  
-  #header
-    padding: 0 4vw 0 4vw
-    box-sizing: border-box
-    display: inline-block
-    margin-left: 10%
-    width: 80%
-    text-align: center
-    border-bottom: 0.17vh solid
-    border-radius: 0.17vh
-    transition: font-size base.$screenFitTime
-    h1
-      font-size: 600%
-      margin-top: 2vh
-      margin-bottom: 0
-      @media #{base.$smallscreen}
-        font-size: 10vmin
-      @media #{base.$widescreen}
-        float: left
-        font-size: 700%
-        line-height: 5vw
-        margin-top: 2vw
-    h2
-      font-size: 300%
-      @media #{base.$smallscreen}
-        font-size: 6vmin
-      @media #{base.$widescreen}
-        font-size: 400%
-        line-height: 5vw
-        float: right
-      font-weight: 100
-    
-</style>

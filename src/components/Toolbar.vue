@@ -13,6 +13,8 @@
       </div>
     </div>
     
+    <img id="topButton" :class="{topButtonClosed: pastTopScroll}" v-on:click="scrollToTop" src="@/assets/top.png"/>
+    
     <transition name="sweepFromRight">
       <nav id="bottomSidebar" :class="{bottomSidebarClosed: !rightMenuOpen}">
         <router-link v-for="route in $router.options.routes" :key="route.path" :to="route.path">{{ route.name }}</router-link>
@@ -27,37 +29,56 @@
     name: 'Toolbar',
     data() {
       return {
+        pastTopScroll: false,
         rightMenuOpen: false
       }
     },
     methods: {
+      setPastTopScrollFunc(v) {
+        var topBar = this.$refs.topBar;
+        if (v) {
+          if (!topBar.classList.contains("topBarOpened"))
+            topBar.classList.add("topBarOpened")
+        } else {
+          if (topBar.classList.contains("topBarOpened"))
+            topBar.classList.remove("topBarOpened");
+        }
+        this.pastTopScroll = v;
+      },
       handleScroll() {
+        if (!this.$refs.topBar) return;
+        
         var topBar = this.$refs.topBar;
         var rect = topBar.getBoundingClientRect();
         var routerView = this.$parent.$refs.routerView.$el;
         if (routerView) {
-          var rect2 = routerView.getBoundingClientRect();
-          if (rect.y < rect2.top) {
-            if (!topBar.classList.contains("topBarClosed"))
-              topBar.classList.add("topBarClosed");
+          var header = routerView.getElementsByClassName("header");
+          if (header.length > 0) {
+            var rect2 = header[0].getBoundingClientRect();
+            if (rect.y - rect.height/2 < rect2.top) {
+              this.setPastTopScrollFunc(false);
+            } else {
+              this.setPastTopScrollFunc(true);
+            }
           } else {
-            if (topBar.classList.contains("topBarClosed"))
-              topBar.classList.remove("topBarClosed");
+            this.setPastTopScrollFunc(false);
           }
         } else {
-          if (!topBar.classList.contains("topBarClosed"))
-              topBar.classList.add("topBarClosed");
+          this.setPastTopScrollFunc(false);
         }
       },
       scrollToTop() {
-        window.scrollTo(0, 0);
+        this.$parent.$refs.routerView.$el.scrollTo(0, 0);
+        var topBar = this.$refs.topBar;
+        if (!topBar.classList.contains("topBarOpened"))
+          topBar.classList.add("topBarOpened");
       },
       goToHome() {
         this.$router.push('/');
         this.scrollToTop();
       }
     },
-    created() {
+    mounted() {
       window.addEventListener('scroll', this.handleScroll);
       for (var i = 0; i < 10; i++) {
         setTimeout(this.handleScroll, i*100);
@@ -77,10 +98,10 @@
 <style lang="sass">
   @use '@/base'
 
-  .topBarClosed
+  .topBarOpened
     @media #{base.$noMobileFit}
-      background-color: transparent !important
-      border-bottom: transparent !important
+      background-color: base.$topBarColor !important
+      border-bottom: 1px solid rgba(0, 0, 0, 0.5) !important
 
   #topBar
     text-align: center
@@ -88,13 +109,15 @@
     top: 0
     width: 100vw
     box-sizing: border-box
-    background-color: base.$topBarColor
-    border-bottom: 1px solid rgba(0, 0, 0, 0.5)
+    background-color: transparent
+    border-bottom: transparent
     height: base.$topBarHeight
     z-index: 300
     transition: background-color base.$transitionTime, border-bottom base.$transitionTime
     @media #{base.$mobileFit}
       transition: none
+      background-color: base.$topBarColor !important
+      border-bottom: 1px solid rgba(0, 0, 0, 0.5) !important
     @media #{base.$smallscreen}
       height: base.$smallscreenHeight
     @media #{base.$widescreen}
@@ -130,6 +153,7 @@
       user-select: none
       line-height: base.$topBarHeight
       transition: transform base.$transitionTime, color base.$transitionTime
+      filter: drop-shadow(0px 0px 1px black)
       &:focus
         outline: 0
       @media #{base.$widescreen}
@@ -185,6 +209,25 @@
   @mixin menuButtonHighlight
     filter: invert(20%)
   
+  .topButtonClosed
+    opacity: 1 !important
+    cursor: pointer
+    
+  #topButton
+    position: fixed
+    top: 0
+    left: 0
+    width: auto
+    height: base.$topBarHeight
+    transform: scale(0.5, 0.5)
+    z-index: 400
+    transition: opacity base.$transitionTime
+    opacity: 0
+    @media #{base.$widescreen}
+      height: base.$widescreenHeight
+    @media #{base.$smallscreen}
+      height: base.$smallscreenHeight
+    
   #menuButton
     position: fixed
     right: 3px
