@@ -1,0 +1,31 @@
+[debug] [2019-12-12T11:23:50.165Z] ----------------------------------------------------------------------
+[debug] [2019-12-12T11:23:50.176Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Manel\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2019-12-12T11:23:50.177Z] CLI Version:   7.6.0
+[debug] [2019-12-12T11:23:50.178Z] Platform:      win32
+[debug] [2019-12-12T11:23:50.178Z] Node Version:  v10.16.3
+[debug] [2019-12-12T11:23:50.184Z] Time:          Thu Dec 12 2019 12:23:50 GMT+0100 (Central European Standard Time)
+[debug] [2019-12-12T11:23:50.184Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-12-12T11:23:50.235Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-12-12T11:23:50.238Z] > authorizing via signed-in user
+[debug] [2019-12-12T11:23:50.239Z] [iam] checking project manelnavolacom for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2019-12-12T11:23:50.250Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/manelnavolacom:testIamPermissions  
+
+[debug] [2019-12-12T11:23:51.518Z] <<< HTTP RESPONSE 200
+[debug] [2019-12-12T11:23:51.531Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/manelnavolacom  
+ 
+[debug] [2019-12-12T11:23:52.017Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'manelnavolacom'...
+[info] 
+[info] i  deploying functions, hosting
+[debug] [2019-12-12T11:23:52.201Z] TypeError [ERR_INVALID_ARG_TYPE]: The "path" argument must be of type string. Received type undefined
+    at validateString (internal/validators.js:125:11)
+    at Object.join (path.js:427:7)
+    at Config.path (C:\Users\Manel\AppData\Roaming\npm\node_modules\firebase-tools\lib\config.js:149:39)
+    at getChildEnvironment (C:\Users\Manel\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\lifecycleHooks.js:50:49)
+    at runTargetCommands (C:\Users\Manel\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\lifecycleHooks.js:71:14)
+    at C:\Users\Manel\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\lifecycleHooks.js:122:24
+    at process._tickCallback (internal/process/next_tick.js:68:7)
+[error] 
+[error] Error: An unexpected error has occurred.
