@@ -63,3 +63,13 @@
     }
   }
 </script>
+
+<style lang="sass">
+  @use '@/base'
+
+  #home
+    scroll-snap-type: y proximity
+    h1
+      @media #{base.$noMobileFit}
+        scroll-snap-align: end
+</style>

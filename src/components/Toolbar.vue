@@ -55,7 +55,7 @@
           var header = routerView.getElementsByClassName("header");
           if (header.length > 0) {
             var rect2 = header[0].getBoundingClientRect();
-            if (rect.y - rect.height/2 < rect2.top) {
+            if (rect.y - rect.height/4 < rect2.top) {
               this.setPastTopScrollFunc(false);
             } else {
               this.setPastTopScrollFunc(true);
@@ -69,9 +69,7 @@
       },
       scrollToTop() {
         this.$parent.$refs.routerView.$el.scrollTo(0, 0);
-        var topBar = this.$refs.topBar;
-        if (!topBar.classList.contains("topBarOpened"))
-          topBar.classList.add("topBarOpened");
+        this.setPastTopScrollFunc(false);
       },
       goToHome() {
         this.$router.push('/');
@@ -97,12 +95,11 @@
 
 <style lang="sass">
   @use '@/base'
-
+  
   .topBarOpened
     @media #{base.$noMobileFit}
-      background-color: base.$topBarColor !important
-      border-bottom: 1px solid rgba(0, 0, 0, 0.5) !important
-
+      background-color: rgba(base.$topBarColor, 0.98) !important
+  
   #topBar
     text-align: center
     position: fixed
@@ -110,7 +107,7 @@
     width: 100vw
     box-sizing: border-box
     background-color: transparent
-    border-bottom: transparent
+    border-bottom: none
     height: base.$topBarHeight
     z-index: 300
     transition: background-color base.$transitionTime, border-bottom base.$transitionTime
@@ -165,7 +162,6 @@
       @media screen and (any-hover: none)
         &:active
           @include topSidebarButtonHighlight
-        
     a.router-link-exact-active
       button
         text-decoration: underline
@@ -211,7 +207,8 @@
   
   .topButtonClosed
     opacity: 1 !important
-    cursor: pointer
+    cursor: pointer !important
+    pointer-events: auto !important
     
   #topButton
     position: fixed
@@ -223,6 +220,7 @@
     z-index: 400
     transition: opacity base.$transitionTime
     opacity: 0
+    pointer-events: none
     @media #{base.$widescreen}
       height: base.$widescreenHeight
     @media #{base.$smallscreen}
@@ -233,14 +231,16 @@
     right: 3px
     top: 0
     box-sizing: border-box
-    cursor: pointer
     width: base.$topBarHeight
     height: base.$topBarHeight
     filter: opacity(0%)
     transform: translate(100%, 0)
+    pointer-events: none
     @media #{base.$mobileFit}
       filter: opacity(100%)
       transform: translate(0, 0) scale(0.8, 0.8)
+      cursor: pointer
+      pointer-events: auto
     @media #{base.$widescreen}
       width: base.$widescreenHeight
       height: base.$widescreenHeight

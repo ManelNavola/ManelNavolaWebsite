@@ -27,6 +27,8 @@
   @use '@/base'
 
   .portfolioRow
+    @media #{base.$noMobileFit}
+      scroll-snap-align: center
     display: grid
     margin: 20vh 4vw 20vh 4vw
     grid-template-columns: 4fr 5fr
@@ -93,7 +95,6 @@
         transform: translateZ(0)
         @media #{base.$smallscreen}
           margin: 1vmax 0 1vmax 0
-          min-width: 70vw !important
           width: 60%
           min-width: 0%
         min-width: 100%

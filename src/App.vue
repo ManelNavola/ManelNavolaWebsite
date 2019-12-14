@@ -84,14 +84,17 @@
     width: 100%
     max-height: 100vh - base.$topBarHeight
     padding-top: base.$topBarHeight
+    margin-bottom: base.$topBarHeight
     overflow-x: hidden
     overflow-y: scroll
     transition: top base.$screenFitTime
     scroll-behavior: smooth
     @media #{base.$smallscreen}
       padding-top: base.$smallscreenHeight
+      margin-bottom: base.$smallscreenHeight
     @media #{base.$widescreen}
       padding-top: base.$widescreenHeight
+      margin-bottom: base.$widescreenHeight
     transform: translateZ(0)
   
   .fadeRight-enter-active, .fadeLeft-enter-active
