@@ -16,7 +16,7 @@
   @use '@/base'
 
   .header
-    padding: 2vmax 4vw 0 4vw
+    padding: 2vmax 4vw 1vmax 4vw
     box-sizing: border-box
     display: inline-block
     margin-left: 10%

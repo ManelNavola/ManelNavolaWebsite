@@ -1,14 +1,17 @@
 <template>
   <div id="songRow">
-    <img v-bind:src="image"/>
-    <h1>{{ title }}</h1>
-    <a class="button spotifyButton" v-if="spotify" :href="spotify" target="_blank">
+    <img class="songImage" v-bind:src="image"/>
+    <h1 class="songTitle">{{ title }}</h1>
+    <div class="songButtons">
+      asd
+    </div>
+    <!--<a class="button spotifyButton" v-if="spotify" :href="spotify" target="_blank">
       <img draggable="false" src="@/assets/spotify_icon.png" class="smallIcon" width="256px" height="256"/>
       <div>
         <p>Listen on Apple Music</p>
       </div>
-    </a>
-    <p>{{ releaseDate }}</p>
+    </a>-->
+    <p class="songRelease">{{ releaseDate }}</p>
   </div>
 </template>
 
@@ -24,12 +27,30 @@
   
   #songRow
     width: 100%
-    height: 25em
+    height: 16em
+    display: grid
+    grid-template-columns: auto 1fr
+    grid-template-rows: 1fr 4fr 2fr
+    grid-gap: 2%
     background-color: rgba(pink, 0.5)
     box-sizing: border-box
-    img
-      float: left
-      height: 100%
+    
+  .songImage
+    height: 100%
+    grid-column: 1
+    grid-row: 1 / 4
+    
+  .songTitle
+    grid-column: 2
+    grid-row: 1
+    
+  .songRelease
+    grid-column: 2
+    grid-row: 3
+    
+  .songButtons
+    grid-column: 2
+    grid-row: 2
     
   .button
     display: inline-block

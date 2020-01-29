@@ -15,6 +15,7 @@
 <script>
   import PortfolioRow from '@/components/PortfolioRow';
   import Header from '@/components/Header';
+  
   export default {
     name: 'Home',
     components: {
