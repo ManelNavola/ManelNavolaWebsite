@@ -55,7 +55,7 @@
           var header = routerView.getElementsByClassName("header");
           if (header.length > 0) {
             var rect2 = header[0].getBoundingClientRect();
-            if (rect.y - rect.height/4 < rect2.top) {
+            if (20 < rect2.top) {
               this.setPastTopScrollFunc(false);
             } else {
               this.setPastTopScrollFunc(true);
@@ -189,7 +189,7 @@
     a
       text-decoration: none
       color: white
-      font-size: 2vmax
+      font-size: 3vmax
       border-top: solid 1px rgba(128,128,128, 0.5)
       padding: 8px 8px 8px 5vw
       max-width: 100%

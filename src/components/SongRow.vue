@@ -1,43 +1,24 @@
 <template>
   <div class="songRow">
-    <div class="songRowWide">
-      <img class="songImage" v-bind:src="image"/>
-      <div class="songInfo">
-        <h1 class="songTitle">{{ title }}</h1>
-        <div class="songButtons">
-          <a class="songButton spotifyButton" v-if="spotify" :href="spotify" target="_blank">
-            <img draggable="false" src="@/assets/spotify_icon.png" class="smallIcon" width="256px" height="256"/>
-            <p>Listen on Spotify</p>
-          </a>
-          <a class="songButton appleMusicButton" v-if="appleMusic" :href="appleMusic" target="_blank">
-            <img draggable="false" src="@/assets/apple_music_icon.png" class="smallIcon" width="256px" height="256"/>
-            <p>Listen on Apple Music</p>
-          </a>
-          <a class="songButton youtubeButton" v-if="youtube" :href="youtube" target="_blank">
-            <img draggable="false" src="@/assets/youtube_icon.png" class="smallIcon" width="256px" height="256"/>
-            <p>Listen on Youtube</p>
-          </a>
-        </div>
-        <p class="songRelease">{{ releaseDate }}</p>
-      </div>
-    </div>
-    <div class="songRowCompact">
-      <h1 class="songTitleCompact">{{ title }}</h1>
-      <img class="songImageCompact" src="@/assets/spotify_icon.png"/>
-      <p class="songReleaseCompact">{{ releaseDate }}</p>
-    </div>
-    <!--<div class="songImage"></div>
-    
-    <div class="songButtons">
-      <div>
-        <a class="button spotifyButton" v-if="spotify" :href="spotify" target="_blank">
+    <img class="songImage" v-bind:src="image"/>
+    <div class="songInfo">
+      <h1 class="songTitle">{{ title }}</h1>
+      <div class="songButtons">
+        <a class="songButton spotifyButton" v-if="spotify" :href="spotify" target="_blank">
           <img draggable="false" src="@/assets/spotify_icon.png" class="smallIcon" width="256px" height="256"/>
-          <div>
-            <p>Listen on Apple Music</p>
-          </div>
+          <p>Listen on Spotify</p>
+        </a>
+        <a class="songButton appleMusicButton" v-if="appleMusic" :href="appleMusic" target="_blank">
+          <img draggable="false" src="@/assets/apple_music_icon.png" class="smallIcon" width="256px" height="256"/>
+          <p>Listen on Apple Music</p>
+        </a>
+        <a class="songButton youtubeButton" v-if="youtube" :href="youtube" target="_blank">
+          <img draggable="false" src="@/assets/youtube_icon.png" class="smallIcon" width="256px" height="256"/>
+          <p>Listen on Youtube</p>
         </a>
       </div>
-    </div>-->
+      <p class="songRelease">{{ releaseDate }}</p>
+    </div>
   </div>
 </template>
 
@@ -52,56 +33,32 @@
   @use '@/base'
   
   .songRow
-    width: 100%
+    width: 120vmin
+    max-width: 95%
+    margin: 0 auto 0 auto
     height: 16em
     display: block
     box-sizing: border-box
-  
-  .songRowWide
-    width: 100%
-    height: 16em
-    display: block
-    box-sizing: border-box
-    @media #{base.$mobileFit}
-      display: none
-    
-  .songRowCompact
-    width: 100%
-    height: 10vmin
-    display: none
-    @media #{base.$mobileFit}
-      display: grid
-      grid-template-columns: auto 1fr
-      grid-template-rows: 1fr auto 1fr
     
   .songImage
     float: left
     height: 100%
     
-  .songImageCompact
-    grid-row: 2
-    grid-column: 1
-    
   .songInfo
     display: grid
     height: 100%
     grid-template-rows: auto 1fr auto
-    padding: 1em
+    padding: 0.1em 1em 0.1em 1em
     box-sizing: border-box
     
   .songTitle
     grid-row: 1
     margin: 0
     
-  .songTitleCompact
-    grid-row: 1
-    
   .songRelease
     grid-row: 3
     margin: 0
     
-  .songReleaseCompact
-    grid-row: 3
   .songButtons
     grid-row: 2
     display: flex
@@ -112,8 +69,9 @@
     
   .songButton
     width: 18em
-    height: 3.8em
+    height: 3.6em
     margin-right: 1.5em
+    margin-bottom: 1em
     border-radius: 1.5em
     box-sizing: border-box
     padding: 0.7em
@@ -128,9 +86,9 @@
       width: auto
     p
       margin-left: 3em
-      line-height: 0.5em
+      line-height: 0.3em
     &:hover
-      transform: scale(1.1, 1.1)
+      transform: scale(1.08, 1.08)
       
   .spotifyButton
     background-color: #1DB954

@@ -30,7 +30,7 @@
     @media #{base.$noMobileFit}
       scroll-snap-align: center
     display: grid
-    margin: 20vh 4vw 20vh 4vw
+    margin: 10vh 4vw 20vh 4vw
     grid-template-columns: 4fr 5fr
     grid-template-rows: auto 1fr
     padding: 0 5vw 0 5vw
@@ -38,6 +38,7 @@
     color: gray
     @media #{base.$mobileFit}
       color: white !important
+      margin: 0vh 4vw 10vh 4vw
     @media #{base.$smallscreen}
       grid-template-columns: 1fr
       grid-template-rows: auto auto 1fr
@@ -75,6 +76,7 @@
         
     .portfolioImage
       margin: auto
+      margin-left: 1em
       min-width: 100%
       grid-row: 1 / 3
       grid-column: 2
@@ -84,7 +86,8 @@
       max-width: 100%
       overflow: hidden
       @media #{base.$smallscreen}
-        width: 100%
+        width: 100vw
+        margin-left: 0
         height: auto
         grid-row: 2
         grid-column: 1

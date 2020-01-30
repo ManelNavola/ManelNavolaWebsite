@@ -27,6 +27,22 @@
       return {
         songs: [
           {
+            title: "The sins of our binoculars",
+            image: "https://f4.bcbits.com/img/a0350892904_16.jpg",
+            releaseDate: "September 3, 2019",
+            spotify: "a",
+            appleMusic: "b",
+            youtube: "c"
+          },
+          {
+            title: "The criticalestest name",
+            image: "https://f4.bcbits.com/img/a0350892904_16.jpg",
+            releaseDate: "September 3, 2019",
+            spotify: "a",
+            appleMusic: "b",
+            youtube: "c"
+          },
+          {
             title: "Statement",
             image: "https://f4.bcbits.com/img/a0350892904_16.jpg",
             releaseDate: "September 3, 2019",
@@ -51,29 +67,6 @@
     methods: {
       handleScroll() {
         this.$parent.$refs.toolbar.handleScroll();
-        var rows = this.$el.getElementsByClassName("portfolioRow");
-        var mid = window.innerHeight/2.0;
-        var midSide = window.innerHeight/2.0;
-        var foundOne = false;
-        for (var i = 0; i < rows.length; i++) {
-          var items = rows[i].getElementsByClassName("portfolioImage");
-          if (items.length == 0) continue;
-          var item = items[0];
-          var rect = item.getBoundingClientRect();
-          var itemY = rect.y + rect.height/2.0;
-          if (rect.height != 0) {
-            if (!foundOne && itemY > mid - midSide*0.5) {
-              item.style.transform = "scale(1.05, 1.05) translate(-5px, -5px)";
-              item.style.filter = "blur(0px) drop-shadow(15px 15px 4px black)";
-              rows[i].style.color = "white";
-              foundOne = true;
-            } else {
-              item.style.transform = "scale(1, 1)";
-              item.style.filter = "blur(2px) drop-shadow(10px 10px 4px black)";
-              rows[i].style.color = "#999";
-            }
-          }
-        }
       }
     },
     mounted() {
@@ -99,10 +92,8 @@
     display: grid
     grid-template-columns: 1fr
     grid-gap: 4em
-    margin-left: 7.5%
-    margin-top: 6vmin
     margin-bottom: 6vmin
-    width: 85%
+    width: 100%
     @media #{base.$widescreen}
       grid-template-columns: 1fr 1fr
     div

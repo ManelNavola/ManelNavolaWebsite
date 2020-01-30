@@ -20,6 +20,7 @@
     box-sizing: border-box
     display: inline-block
     margin-left: 10%
+    margin-bottom: 6vmax
     width: 80%
     text-align: center
     border-bottom: 0.17vh solid
@@ -27,8 +28,8 @@
     transition: font-size base.$screenFitTime
     transform: translateZ(0)
     h1
-      font-size: 600%
-      margin-top: 2vh
+      font-size: 5.8em
+      margin-top: 0
       margin-bottom: 0
       @media #{base.$smallscreen}
         font-size: 10vmin
@@ -39,6 +40,8 @@
         margin-top: 2vw
     h2
       font-size: 300%
+      margin-top: 0.5em
+      margin-bottom: 1em
       @media #{base.$smallscreen}
         font-size: 6vmin
       @media #{base.$widescreen}
