@@ -1,23 +1,30 @@
 <template>
   <div class="songRow">
-    <img class="songImage" v-bind:src="image"/>
-    <div class="songInfo">
-      <h1 class="songTitle">{{ title }}</h1>
-      <div class="songButtons">
-        <a class="songButton spotifyButton" v-if="spotify" :href="spotify" target="_blank">
-          <img draggable="false" src="@/assets/spotify_icon.png" class="smallIcon" width="256px" height="256"/>
-          <p>Listen on Spotify</p>
-        </a>
-        <a class="songButton appleMusicButton" v-if="appleMusic" :href="appleMusic" target="_blank">
-          <img draggable="false" src="@/assets/apple_music_icon.png" class="smallIcon" width="256px" height="256"/>
-          <p>Listen on Apple Music</p>
-        </a>
-        <a class="songButton youtubeButton" v-if="youtube" :href="youtube" target="_blank">
-          <img draggable="false" src="@/assets/youtube_icon.png" class="smallIcon" width="256px" height="256"/>
-          <p>Listen on Youtube</p>
-        </a>
+    <div class="songRowWide">
+      <img class="songImage" v-bind:src="image"/>
+      <div class="songInfo">
+        <h1 class="songTitle">{{ title }}</h1>
+        <div class="songButtons">
+          <a class="songButton spotifyButton" v-if="spotify" :href="spotify" target="_blank">
+            <img draggable="false" src="@/assets/spotify_icon.png" class="smallIcon" width="256px" height="256"/>
+            <p>Listen on Spotify</p>
+          </a>
+          <a class="songButton appleMusicButton" v-if="appleMusic" :href="appleMusic" target="_blank">
+            <img draggable="false" src="@/assets/apple_music_icon.png" class="smallIcon" width="256px" height="256"/>
+            <p>Listen on Apple Music</p>
+          </a>
+          <a class="songButton youtubeButton" v-if="youtube" :href="youtube" target="_blank">
+            <img draggable="false" src="@/assets/youtube_icon.png" class="smallIcon" width="256px" height="256"/>
+            <p>Listen on Youtube</p>
+          </a>
+        </div>
+        <p class="songRelease">{{ releaseDate }}</p>
       </div>
-      <p class="songRelease">{{ releaseDate }}</p>
+    </div>
+    <div class="songRowCompact">
+      <h1 class="songTitleCompact">{{ title }}</h1>
+      <img class="songImageCompact" src="@/assets/spotify_icon.png"/>
+      <p class="songReleaseCompact">{{ releaseDate }}</p>
     </div>
     <!--<div class="songImage"></div>
     
@@ -49,10 +56,31 @@
     height: 16em
     display: block
     box-sizing: border-box
+  
+  .songRowWide
+    width: 100%
+    height: 16em
+    display: block
+    box-sizing: border-box
+    @media #{base.$mobileFit}
+      display: none
+    
+  .songRowCompact
+    width: 100%
+    height: 10vmin
+    display: none
+    @media #{base.$mobileFit}
+      display: grid
+      grid-template-columns: auto 1fr
+      grid-template-rows: 1fr auto 1fr
     
   .songImage
     float: left
     height: 100%
+    
+  .songImageCompact
+    grid-row: 2
+    grid-column: 1
     
   .songInfo
     display: grid
@@ -65,10 +93,15 @@
     grid-row: 1
     margin: 0
     
+  .songTitleCompact
+    grid-row: 1
+    
   .songRelease
     grid-row: 3
     margin: 0
     
+  .songReleaseCompact
+    grid-row: 3
   .songButtons
     grid-row: 2
     display: flex
