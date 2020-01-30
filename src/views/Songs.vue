@@ -9,6 +9,8 @@
                  :image="song.image"
                  :releaseDate="song.releaseDate"
                  :spotify="song.spotify"
+                 :appleMusic="song.appleMusic"
+                 :youtube="song.youtube"
                  />
       </div>
     </div>
@@ -28,37 +30,17 @@
             title: "Statement",
             image: "https://f4.bcbits.com/img/a0350892904_16.jpg",
             releaseDate: "September 3, 2019",
-            spotify: "a"
+            spotify: "a",
+            appleMusic: "b",
+            youtube: "c"
           },
           {
-            title: "Statement",
+            title: "Ready Now",
             image: "https://f4.bcbits.com/img/a0350892904_16.jpg",
-            releaseDate: "September 4, 2019",
-            spotify: "a"
-          },
-          {
-            title: "Statement",
-            image: "https://f4.bcbits.com/img/a0350892904_16.jpg",
-            releaseDate: "September 5, 2019",
-            spotify: "a"
-          },
-          {
-            title: "Statement",
-            image: "https://f4.bcbits.com/img/a0350892904_16.jpg",
-            releaseDate: "September 6, 2019",
-            spotify: "a"
-          },
-          {
-            title: "Statement",
-            image: "https://f4.bcbits.com/img/a0350892904_16.jpg",
-            releaseDate: "September 7, 2019",
-            spotify: "a"
-          },
-          {
-            title: "Statement",
-            image: "https://f4.bcbits.com/img/a0350892904_16.jpg",
-            releaseDate: "September 8, 2019",
-            spotify: "a"
+            releaseDate: "September 3, 2019",
+            spotify: "a",
+            appleMusic: "b",
+            youtube: "c"
           }
         ]
       }
@@ -116,7 +98,7 @@
   #songList
     display: grid
     grid-template-columns: 1fr
-    grid-gap: 4vmin
+    grid-gap: 4em
     margin-left: 7.5%
     margin-top: 6vmin
     margin-bottom: 6vmin

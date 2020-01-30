@@ -1,6 +1,6 @@
 <template>
   <div class="header">
-    <h1>{{ title }}</h1>
+    <h1 :class="{ headerNoSub: (subtitle.length == 0) }">{{ title }}</h1>
     <h2>{{ subtitle }}</h2>
   </div>
 </template>
@@ -16,7 +16,7 @@
   @use '@/base'
 
   .header
-    padding: 2vmax 4vw 1vmax 4vw
+    padding: 2vmax 4vw 0 4vw
     box-sizing: border-box
     display: inline-block
     margin-left: 10%
@@ -46,5 +46,9 @@
         line-height: 5vw
         float: right
       font-weight: 100
+      
+  .headerNoSub
+    @media #{base.$widescreen}
+      float: none !important
     
 </style>
