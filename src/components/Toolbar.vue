@@ -48,8 +48,6 @@
       handleScroll() {
         if (!this.$refs.topBar) return;
         
-        var topBar = this.$refs.topBar;
-        var rect = topBar.getBoundingClientRect();
         var routerView = this.$parent.$refs.routerView.$el;
         if (routerView) {
           var header = routerView.getElementsByClassName("header");

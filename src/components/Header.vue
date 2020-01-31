@@ -20,7 +20,7 @@
     box-sizing: border-box
     display: inline-block
     margin-left: 10%
-    margin-bottom: 6vmax
+    margin-bottom: 15vmin
     width: 80%
     text-align: center
     border-bottom: 0.17vh solid
