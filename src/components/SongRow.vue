@@ -45,12 +45,6 @@
     box-sizing: border-box
     @media #{base.$widescreen}
       width: 100%
-    @media #{base.$smallscreen}
-      margin-left: 5%
-      margin-bottom: 2em
-      width: 95%
-      min-width: 95%
-      max-width: 95%
     @media #{base.$mobileFit}
       margin-left: 5%
       margin-bottom: 2em
@@ -59,10 +53,15 @@
       max-width: 95%
       height: 40vh
       margin-bottom: 0
+    @media (orientation: portrait)
+      height: 20vh
     
   .songImage
     float: left
     height: 100%
+    @media (orientation: portrait)
+      max-width: 40vw
+      max-height: 40vw
     
   .songInfo
     display: grid
@@ -72,12 +71,16 @@
     box-sizing: border-box
     @media #{base.$mobileFit}
       padding: 0.1em .5em 0.1em 2.5vw
+    @media (orientation: portrait)
+      grid-template-rows: auto auto 1fr
     
   .songTitle
     grid-row: 1
     margin: 0
     @media #{base.$mobileFit}
       font-size: 6vmin
+    @media (orientation: portrait)
+      font-size: 5vmin
     
   .songRelease
     grid-row: 3
@@ -101,24 +104,30 @@
     margin-right: 1.5em
     border-radius: 1.5em
     box-sizing: border-box
-    padding: 0.7em
+    padding: .5em
+    padding-left: .7em
     text-decoration: none
     color: white
-    padding-left: 1em
     transition: transform 0.2s
     transform: scale(1, 1)
-    @media #{base.$smallscreen}
-      margin-bottom: .5em
-      width: 16em
-      height: 3.2em
+    display: flex
+    align-items: center
+    justify-content: left
     @media #{base.$mobileFit}
       margin-right: 1.5vw
-      padding: .35em
+      margin-top: .2em
+      margin-bottom: .2em
+      padding: .5em
       width: 30vw
+      max-width: 60vh
       height: 10vh
-      font-size: 2.9vw
+      align-items: center
+    @media (orientation: portrait)
+      height: 12vw
+      width: 12vw
+      margin: 0
+      margin-right: 2vw
     img
-      float: left
       height: 100%
       width: auto
     &:hover
@@ -128,21 +137,19 @@
     
   .songButtonText
     display: block
-    margin-left: 3em
-    line-height: 0.3em
+    margin-left: 1em
+    font-size: 1.15em
     @media #{base.$smallscreen}
       display: none
     
   .songButtonTextSmall
     display: none
-    @media #{base.$smallscreen}
-      display: inline
-      margin-left: .5em
-      line-height: 1.75em
     @media #{base.$mobileFit}
-      display: inline
-      margin-left: 1vw
-      line-height: 5vh
+      display: block
+      margin-left: 3%
+      font-size: 2.3vw
+    @media (orientation: portrait)
+      display: none
       
   .spotifyButton
     background-color: #1DB954
