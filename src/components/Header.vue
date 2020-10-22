@@ -1,14 +1,15 @@
 <template>
   <div class="header">
     <h1 :class="{ headerNoSub: (subtitle.length == 0) }">{{ title }}</h1>
-    <h2>{{ subtitle }}</h2>
+    <h2 v-if="bigSubtitle">{{ subtitle }}</h2>
+    <h3 v-if="!bigSubtitle">{{ subtitle }}</h3>
   </div>
 </template>
 
 <script>
   export default {
     name: 'Header',
-    props: ['title', 'subtitle']
+    props: ['title', 'subtitle', 'bigSubtitle']
   }
 </script>
 
@@ -28,7 +29,7 @@
     transition: font-size base.$screenFitTime
     transform: translateZ(0)
     h1
-      font-size: 5.8em
+      font-size: 5.4em
       margin-top: 0
       margin-bottom: 0
       @media #{base.$smallscreen}
@@ -39,7 +40,18 @@
         line-height: 5vw
         margin-top: 2vw
     h2
-      font-size: 300%
+      font-size: 250%
+      margin-top: 0.5em
+      margin-bottom: 1em
+      @media #{base.$smallscreen}
+        font-size: 6vmin
+      @media #{base.$widescreen}
+        font-size: 400%
+        line-height: 5vw
+        float: right
+      font-weight: 100
+    h3
+      font-size: 150%
       margin-top: 0.5em
       margin-bottom: 1em
       @media #{base.$smallscreen}

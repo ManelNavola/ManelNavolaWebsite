@@ -187,7 +187,7 @@
     a
       text-decoration: none
       color: white
-      font-size: 3vmax
+      font-size: 2.7vmax
       border-top: solid 1px rgba(128,128,128, 0.5)
       padding: 8px 8px 8px 5vw
       max-width: 100%

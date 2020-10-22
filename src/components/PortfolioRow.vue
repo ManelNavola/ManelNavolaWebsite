@@ -30,7 +30,7 @@
     @media #{base.$noMobileFit}
       scroll-snap-align: center
     display: grid
-    margin: 10vh 4vw 20vh 4vw
+    margin: 2vh 7vw 14vh 7vw
     grid-template-columns: 4fr 5fr
     grid-template-rows: auto 1fr
     padding: 0 5vw 0 5vw
@@ -93,7 +93,7 @@
         grid-column: 1
       @media #{base.$mobileFit}
         transform: scale(1, 1) !important
-        filter: drop-shadow(10px 10px 4px black) !important
+        filter: drop-shadow(10px 10px 4px #222222) !important
       img
         transform: translateZ(0)
         @media #{base.$smallscreen}

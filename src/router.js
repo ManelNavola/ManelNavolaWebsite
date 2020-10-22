@@ -2,6 +2,7 @@
 import VueRouter from 'vue-router'
 import Home from '@/views/Home'
 import Songs from '@/views/Songs'
+import Projects from '@/views/Projects'
 
 export default new VueRouter({
   mode: 'history',
@@ -12,8 +13,13 @@ export default new VueRouter({
       component: Home
     },
     {
-      path: '/songs',
-      name: 'Songs',
+      path: '/projects',
+      name: 'Projects',
+      component: Projects
+    },
+    {
+      path: '/music',
+      name: 'Music',
       component: Songs
     }
   ]

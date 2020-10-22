@@ -54,7 +54,7 @@
       height: 40vh
       margin-bottom: 0
     @media (orientation: portrait)
-      height: 20vh
+      height: 15vh
     
   .songImage
     float: left
@@ -66,8 +66,9 @@
   .songInfo
     display: grid
     height: 100%
+    max-width: 80vh
     grid-template-rows: auto 1fr auto
-    padding: 0.1em 1em 0.1em 1em
+    padding: 0.1em 1em 0.1em 2em
     box-sizing: border-box
     @media #{base.$mobileFit}
       padding: 0.1em .5em 0.1em 2.5vw
@@ -138,7 +139,7 @@
   .songButtonText
     display: block
     margin-left: 1em
-    font-size: 1.15em
+    font-size: 1.2em
     @media #{base.$smallscreen}
       display: none
     
@@ -152,14 +153,14 @@
       display: none
       
   .spotifyButton
-    background-color: #1DB954
-    border: '5px solid #1EBA55'
+    background-color: #0DA944
+    border: '5px solid #0EAA45'
     
   .appleMusicButton
-    background-color: #DD6892
-    border: '5px solid #DE6993'
+    background-color: #CD7882
+    border: '5px solid #CE7983'
     
   .youtubeButton
-    background-color: #FE0000
-    border: '5px solid #FF0101'
+    background-color: #CE0000
+    border: '5px solid #CF0101'
 </style>
