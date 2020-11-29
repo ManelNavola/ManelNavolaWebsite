@@ -2,6 +2,8 @@
 node_modules
 /dist
 /.firebase
+/_old
+/.vs
 
 # local env files
 .env.local
