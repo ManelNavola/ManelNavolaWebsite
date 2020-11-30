@@ -1,25 +1,25 @@
 <template>
   <div id="home">
-    <Header title="Manel Navola" subtitle="Developer & Musician" bigSubtitle="true"/>
+    <Header title="Manel Angresola Navarro" subtitle="Programmer & Composer" bigSubtitle="true"/>
     <div id="portfolioList">
       
       <PortfolioRow
         title="Web Development"
-        subtitle="HTML, CSS, Javascript, Vue js, Node js"
+        subtitle="HTML, CSS, Javascript, Vue.js, Node.js"
         text="Web design using the latest libraries"
         imgURL="webDev.jpg"
         />
       
       <PortfolioRow
         title="Music Production"
-        subtitle="FL Studio"
-        text="I also make music!"
+        subtitle="FL Studio, Reaper, Audacity"
+        text="Production using a varied set of libraries and music theory knowledge"
         imgURL="flStudio.jpg"
         />
       
       <PortfolioRow
         title="App Development"
-        subtitle="C#, Java, Eclipse, Netbeans, Scenebuilder, Visual Studio, Entity Framework"
+        subtitle="C#, Java, Eclipse, Visual Studio, Entity Framework"
         text="App development and design using the latest tools"
         imgURL="appDev.jpg"
         />
@@ -50,7 +50,7 @@
           var rect = item.getBoundingClientRect();
           var itemY = rect.y + rect.height/2.0;
           if (rect.height != 0) {
-            if (!foundOne && itemY > mid - midSide*0.5) {
+            if (!foundOne && itemY > mid - midSide*0.5 + 5) {
               item.style.transform = "scale(1.05, 1.05) translate(-5px, -5px)";
               item.style.filter = "blur(0px) drop-shadow(15px 15px 4px #222222)";
               rows[i].style.color = "white";

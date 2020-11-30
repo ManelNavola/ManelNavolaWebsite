@@ -28,12 +28,14 @@
             title: "MC Interactive",
             description: "A Java Plugin for Minecraft Servers that connects and integrates "
               + "Twitch IRC capabilities",
-            image: "mci.png",
+            image: "mci.jpg",
             github: "https://github.com/ManelNavola/MCInteractive",
-            //releaseDate: "October 17, 2020",
-            //spotify: "https://open.spotify.com/album/4U28P52jpvmanqEqDv9z2N?si=frqf-aiaTzCBjEMyZBKLDQ",
-            //appleMusic: "https://music.apple.com/us/album/static-ep/1532336523?uo=4",
-            //youtube: "https://www.youtube.com/watch?v=p61t-4SjGyU&list=PL0LkLyIcBERYgtQQL_s7xCPkmqqwkDNXN"
+          },
+          {
+            title: "Space Station 14",
+            description: "Contributing to the open-source C# remake of the videogame Space Station 13",
+            image: "ss14.jpg",
+            github: "https://github.com/space-wizards/space-station-14/",
           }
         ]
       }
@@ -68,11 +70,9 @@
   #projectList
     display: grid
     grid-template-columns: 1fr
-    grid-gap: 5em
-    margin-bottom: 6vmin
+    grid-gap: 1vmax
     width: 100%
     @media #{base.$widescreen}
       grid-template-columns: 1fr 1fr
-    div
       
 </style>

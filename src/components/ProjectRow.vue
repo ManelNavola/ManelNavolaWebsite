@@ -95,6 +95,8 @@
         grid-row: 2
         grid-column: 1
       img
+        border: 1.5px
+        border-style: solid
         transform: translateZ(0)
         @media #{base.$smallscreen}
           margin: 1vmax 0 1vmax 0

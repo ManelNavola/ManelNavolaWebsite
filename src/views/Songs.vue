@@ -1,7 +1,6 @@
 <template>
   <div id="songs">
-    <Header title="Official Music" subtitle=""/>
-    
+    <Header title="Original Music" subtitle=""/>
     <div id="songList">
       <div v-for="song in songs" :key="song.releaseDate">
         <SongRow
@@ -11,6 +10,8 @@
                  :spotify="song.spotify"
                  :appleMusic="song.appleMusic"
                  :youtube="song.youtube"
+                 :bandcamp="song.bandcamp"
+                 :bandcampbig="song.bandcampbig"
                  />
       </div>
     </div>
@@ -28,7 +29,7 @@
         songs: [
           {
             title: "Static (Album)",
-            image: "https://f4.bcbits.com/img/a2784371020_16.jpg",
+            bandcampbig: "https://bandcamp.com/EmbeddedPlayer/album=2753908528/size=large/bgcol=333333/linkcol=ffffff/tracklist=false/transparent=true/",
             releaseDate: "October 17, 2020",
             spotify: "https://open.spotify.com/album/4U28P52jpvmanqEqDv9z2N?si=frqf-aiaTzCBjEMyZBKLDQ",
             appleMusic: "https://music.apple.com/us/album/static-ep/1532336523?uo=4",
@@ -36,7 +37,7 @@
           },
           {
             title: "Statement",
-            image: "https://f4.bcbits.com/img/a0350892904_16.jpg",
+            bandcamp: "https://bandcamp.com/EmbeddedPlayer/track=652969858/size=large/bgcol=333333/linkcol=ffffff/tracklist=false/transparent=true/",
             releaseDate: "September 3, 2019",
             spotify: "https://open.spotify.com/album/0DqkbdB8GlzNKD4QQ3UahT",
             appleMusic: "https://music.apple.com/us/album/statement-single/1478782826?uo=4",
@@ -44,13 +45,13 @@
           },
           {
             title: "Ready Now (ft. stepak)",
-            image: "https://f4.bcbits.com/img/a2018584721_16.jpg",
+            bandcamp: "https://bandcamp.com/EmbeddedPlayer/track=3373458318/size=large/bgcol=333333/linkcol=ffffff/tracklist=false/transparent=true/",
             releaseDate: "November 19, 2018",
             youtube: "www.youtube.com/watch?v=KAGy4ja4TXY"
           },
           {
             title: "Waiting for You (EP)",
-            image: "https://f4.bcbits.com/img/a0757260688_16.jpg",
+            bandcampbig: "https://bandcamp.com/EmbeddedPlayer/album=4248045383/size=large/bgcol=333333/linkcol=ffffff/tracklist=false/transparent=true/",
             releaseDate: "August 9, 2018",
             youtube: "https://www.youtube.com/watch?v=yiLdHvNpLkU&list=PL0LkLyIcBERZ7Ac5cBzAKld29fv5ZXxTg"
           }
@@ -87,10 +88,9 @@
   #songList
     display: grid
     grid-template-columns: 1fr
-    grid-gap: 5em
-    margin-left: 5%
-    margin-bottom: 6vmin
-    width: 100%
+    grid-gap: 6em
+    width: 75%
+    margin: 0 auto 5em auto
     @media #{base.$widescreen}
       grid-template-columns: 1fr 1fr
     div

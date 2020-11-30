@@ -24,7 +24,7 @@
     },
     metaInfo: {
       title: '...',
-      titleTemplate: '%s | Manel Navola'
+      titleTemplate: '%s | Manel Angresola Navarro'
     },
     watch: {
       $route (to, from) {
@@ -57,9 +57,7 @@
       background-color: darken(base.$backgroundColor, 2%)
     color: white
     overflow-x: hidden
-    user-select: none
     font-family: base.$mainFont
-    image-scaling: smooth
     -webkit-tap-highlight-color: transparent
     overflow-y: hidden
   
@@ -98,24 +96,20 @@
     transform: translateZ(0)
   
   .fadeRight-enter-active, .fadeLeft-enter-active
-    transition: transform 0.15s, opacity 0.25s
+    transition: opacity 0.25s
     
   .fadeRight-leave-active, .fadeLeft-leave-active
-    transition: transform 0.1s, opacity 0.15s
+    transition: opacity 0.15s
     
   .fadeRight-enter
     opacity: 0
-    transform: translate(100%, 0)
     
   .fadeRight-leave-to
     opacity: 0
-    transform: translate(-100%, 0)
     
   .fadeLeft-enter
     opacity: 0
-    transform: translate(-100%, 0)
     
   .fadeLeft-leave-to
     opacity: 0
-    transform: translate(100%, 0)
 </style>

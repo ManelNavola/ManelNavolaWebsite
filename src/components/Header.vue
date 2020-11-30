@@ -29,9 +29,9 @@
     transition: font-size base.$screenFitTime
     transform: translateZ(0)
     h1
-      font-size: 5.4em
+      font-size: 4.5em
       margin-top: 0
-      margin-bottom: 0
+      margin-bottom: .1em
       @media #{base.$smallscreen}
         font-size: 10vmin
       @media #{base.$widescreen}

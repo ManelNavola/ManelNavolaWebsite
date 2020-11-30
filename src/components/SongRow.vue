@@ -1,6 +1,12 @@
 <template>
   <div class="songRow">
-    <img class="songImage" v-bind:src="image"/>
+    <div v-if="bandcamp">
+      <iframe class="songImage" style="background-color: rgba(0, 0, 0, 0.5); transform-origin: 0 0; overflow: visible; margin-bottom: -50px; height: 370px; border: 0;" v-bind:src="bandcamp" seamless><a href="https://manelnavola.bandcamp.com/album/static">Static by Manel Navola</a></iframe>
+    </div>
+    <div v-if="bandcampbig">
+      <iframe v-if="bandcampbig" class="songImage" style="background-color: rgba(0, 0, 0, 0.5); transform-origin: 0 0; overflow: visible; margin-bottom: -50px; height: 399px; border: 0;" v-bind:src="bandcampbig" seamless><a href="https://manelnavola.bandcamp.com/album/static">Static by Manel Navola</a></iframe>
+    </div>
+    <img class="songImage" v-if="image" v-bind:src="image"/>
     <div class="songInfo">
       <h1 class="songTitle">{{ title }}</h1>
       <div class="songButtons">
@@ -28,15 +34,18 @@
 <script>
   export default {
     name: "SongRow",
-    props: ['title', 'releaseDate', 'spotify', 'appleMusic', 'youtube', 'image']
+    props: ['title', 'releaseDate', 'spotify', 'appleMusic', 'youtube', 'image', 'bandcamp', 'bandcampbig']
   }
 </script>
 
 <style lang="sass">
   @use '@/base'
-  
+
+  [v-cloak]
+    display: none
+
   .songRow
-    width: 150vmin
+    width: 50%
     min-width: 60em
     max-width: 85%
     margin: 0 auto 0 auto
@@ -58,7 +67,12 @@
     
   .songImage
     float: left
-    height: 100%
+    width: 256px
+    height: 16em
+    overflow: visible
+    @media #{base.$mobileFit}
+      max-width: 20vw
+      max-height: 20vw
     @media (orientation: portrait)
       max-width: 40vw
       max-height: 40vw
@@ -124,8 +138,8 @@
       height: 10vh
       align-items: center
     @media (orientation: portrait)
-      height: 12vw
-      width: 12vw
+      height: 10vw
+      width: 10vw
       margin: 0
       margin-right: 2vw
     img

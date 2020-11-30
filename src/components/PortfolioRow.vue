@@ -101,5 +101,5 @@
           width: 60%
           min-width: 0%
         min-width: 100%
-        width: 40em
+        width: 30em
 </style>
