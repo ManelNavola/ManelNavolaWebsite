@@ -93,6 +93,5 @@
     margin: 0 auto 5em auto
     @media #{base.$widescreen}
       grid-template-columns: 1fr 1fr
-    div
       
 </style>
