@@ -30,7 +30,7 @@
     @media #{base.$noMobileFit}
       scroll-snap-align: center
     display: grid
-    margin: 2vh 7vw 14vh 7vw
+    margin: 0vh 7vw 18vh 7vw
     grid-template-columns: 4fr 5fr
     grid-template-rows: auto 1fr
     padding: 0 5vw 0 5vw

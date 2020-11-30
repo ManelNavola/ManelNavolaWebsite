@@ -50,7 +50,7 @@
           var rect = item.getBoundingClientRect();
           var itemY = rect.y + rect.height/2.0;
           if (rect.height != 0) {
-            if (!foundOne && itemY > mid - midSide*0.5 + 5) {
+            if (!foundOne && itemY > mid - midSide*0.5) {
               item.style.transform = "scale(1.05, 1.05) translate(-5px, -5px)";
               item.style.filter = "blur(0px) drop-shadow(15px 15px 4px #222222)";
               rows[i].style.color = "white";
