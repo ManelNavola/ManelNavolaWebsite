@@ -26,7 +26,7 @@
         projects: [
           {
             title: "MC Interactive",
-            description: "A Java Plugin for Minecraft Servers that connects and integrates "
+            description: "Solo dev of a Java Plugin for Minecraft Servers that connects and integrates "
               + "Twitch IRC capabilities",
             image: "mci.jpg",
             github: "https://github.com/ManelNavola/MCInteractive",
@@ -74,5 +74,6 @@
     width: 100%
     @media #{base.$widescreen}
       grid-template-columns: 1fr 1fr
+      grid-gap: 1vmax
       
 </style>

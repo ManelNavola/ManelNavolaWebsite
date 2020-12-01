@@ -46,6 +46,8 @@
     @media #{base.$smallscreen}
       grid-template-columns: 1fr
       grid-template-rows: auto auto 1fr
+    @media #{base.$widescreen}
+      padding: 0 1vw 0 1vw
     h1
       font-size: 200%
       grid-row: 1

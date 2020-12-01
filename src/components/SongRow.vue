@@ -1,10 +1,10 @@
 <template>
   <div class="songRow">
     <div v-if="bandcamp">
-      <iframe class="songImage" style="background-color: rgba(0, 0, 0, 0.5); transform-origin: 0 0; overflow: visible; margin-bottom: -50px; height: 370px; border: 0;" v-bind:src="bandcamp" seamless><a href="https://manelnavola.bandcamp.com/album/static">Static by Manel Navola</a></iframe>
+      <iframe class="songImage" style="transform-origin: 0 0; overflow: visible; margin-bottom: -50px; height: 370px;" v-bind:src="bandcamp" seamless><a href="https://manelnavola.bandcamp.com/album/static">Static by Manel Navola</a></iframe>
     </div>
     <div v-if="bandcampbig">
-      <iframe v-if="bandcampbig" class="songImage" style="background-color: rgba(0, 0, 0, 0.5); transform-origin: 0 0; overflow: visible; margin-bottom: -50px; height: 399px; border: 0;" v-bind:src="bandcampbig" seamless><a href="https://manelnavola.bandcamp.com/album/static">Static by Manel Navola</a></iframe>
+      <iframe v-if="bandcampbig" class="songImage" style="transform-origin: 0 0; overflow: visible; margin-bottom: -50px; height: 399px;" v-bind:src="bandcampbig" seamless><a href="https://manelnavola.bandcamp.com/album/static">Static by Manel Navola</a></iframe>
     </div>
     <img class="songImage" v-if="image" v-bind:src="image"/>
     <div class="songInfo">
@@ -66,6 +66,8 @@
       height: 15vh
     
   .songImage
+    background-color: #333333
+    border: 1px solid #777777 !important
     float: left
     width: 256px
     height: 16em

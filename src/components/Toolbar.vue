@@ -6,6 +6,27 @@
         <router-link v-for="route in $router.options.routes" :key="route.path" :to="route.path"><button @click="scrollToTop">{{ route.name }}</button></router-link>
       </nav>
       
+      <div class="toolbarButtons">
+        <a @mouseover="showing = 'linkedin'" @mouseleave="showing = ''" class="toolbarButton anyButton" :href="linkedin" target="_blank">
+          <div class="toolbarButtonBelow" v-show="showing == 'linkedin'">
+            <p>Linkedin Profile</p>
+          </div>
+          <img draggable="false" src="@/assets/linkedin_icon.png" class="smallIcon" width="256px" height="256"/>
+        </a>
+        <a @mouseover="showing = 'github'" @mouseleave="showing = ''" class="toolbarButton anyButton" :href="github" target="_blank">
+          <div class="toolbarButtonBelow" v-show="showing == 'github'">
+            <p>GitHub Profile</p>
+          </div>
+          <img draggable="false" src="@/assets/github_icon.png" class="smallIcon" width="256px" height="256"/>
+        </a>
+        <a @mouseover="showing = 'twitter'" @mouseleave="showing = ''" class="toolbarButton anyButton" :href="twitter" target="_blank">
+          <div class="toolbarButtonBelow" v-show="showing == 'twitter'">
+            <p>Twitter Profile</p>
+          </div>
+          <img draggable="false" src="@/assets/twitter_icon.png" class="smallIcon" width="256px" height="256"/>
+        </a>
+      </div>
+      
       <div id="menuButton" v-on:click="rightMenuOpen = !rightMenuOpen">
         <img id="menuButtonBar1" draggable="false" :class="{menuButtonBar1Open: rightMenuOpen}" src="@/assets/menuBar.png"/>
         <img id="menuButtonBar2" draggable="false" :class="{menuButtonBar2Open: rightMenuOpen}" src="@/assets/menuBar.png"/>
@@ -29,6 +50,10 @@
     name: 'Toolbar',
     data() {
       return {
+        showing: "",
+        github: "https://github.com/ManelNavola",
+        linkedin: "https://www.linkedin.com/in/manelangresola/",
+        twitter: "https://twitter.com/ManelNavola",
         pastTopScroll: false,
         rightMenuOpen: false
       }
@@ -96,7 +121,7 @@
   
   .topBarOpened
     @media #{base.$noMobileFit}
-      background-color: rgba(base.$topBarColor, 0.98) !important
+      background-color: rgba(base.$topBarColor, 0.975) !important
   
   #topBar
     text-align: center
@@ -286,4 +311,78 @@
       width: 96%
       height: auto
       transition: transform base.$transitionTime
+      
+  .toolbarButtons
+    position: fixed
+    left: base.$topBarHeight
+    height: base.$topBarHeight
+    @media #{base.$widescreen}
+      left: base.$widescreenHeight
+      height: base.$widescreenHeight
+    @media #{base.$smallscreen}
+      left: base.$smallscreenHeight
+      height: base.$smallscreenHeight
+    top: 0
+    width: 30%
+    display: flex
+    flex-wrap: wrap
+    align-items: center
+    box-sizing: border-box
+    
+  .toolbarButton
+    width: 3.5em
+    height: 3.5em
+    margin-right: 1.5em
+    border-radius: 1em
+    box-sizing: border-box
+    padding: .5em
+    text-decoration: none
+    color: white
+    transition: transform 0.2s
+    transform: scale(1, 1)
+    display: flex
+    align-items: center
+    justify-content: left
+    @media #{base.$mobileFit}
+      margin-right: 1.5vw
+      margin-top: .2em
+      margin-bottom: .2em
+      width: 30vw
+      max-width: 60vh
+      height: 10vh
+    @media (orientation: portrait)
+      height: 10vw
+      width: 10vw
+      margin: 0
+      margin-right: 2vw
+    img
+      height: 90%
+      margin-left: 5%
+      width: auto
+      float: left
+    &:hover
+      transform: scale(1.08, 1.08)
+      @media #{base.$smallscreen}
+        transform: scale(1.04, 1.04)
+    
+  .anyButton
+    background-color: #EEEEEE
+    border: '5px solid #1EBA55'
+    
+  .toolbarButtonBelow
+    width: 260%
+    line-height: 40%
+    margin: 0 auto 0 auto
+    padding: 0
+    background-color: rgba(0, 0, 0, .9)
+    border-radius: 1em
+    color: white
+    top: 120%
+    vertical-align: middle
+    height: 60%
+    left: -77.5%
+    position: absolute
+    text-align: center
+    
+      
 </style>

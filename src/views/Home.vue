@@ -1,5 +1,6 @@
 <template>
   <div id="home">
+    <br>
     <Header title="Manel Angresola Navarro" subtitle="Programmer & Composer" bigSubtitle="true"/>
     <div id="portfolioList">
       
@@ -11,17 +12,17 @@
         />
       
       <PortfolioRow
-        title="Music Production"
-        subtitle="FL Studio, Reaper, Audacity"
-        text="Production using a varied set of libraries and music theory knowledge"
-        imgURL="flStudio.jpg"
-        />
-      
-      <PortfolioRow
         title="App Development"
         subtitle="C#, Java, Eclipse, Visual Studio, Entity Framework"
         text="App development and design using the latest tools"
         imgURL="appDev.jpg"
+        />
+      
+      <PortfolioRow
+        title="Music Production"
+        subtitle="FL Studio, Reaper, Audacity"
+        text="Production using a varied set of libraries and music theory knowledge"
+        imgURL="flStudio.jpg"
         />
     </div>
   </div>
